@@ -9,7 +9,7 @@ const Profile = () => {
                 credentials: 'include', // pentru cookies
             });
             // După ce utilizatorul este delogat, redirecționează-l către pagina de înregistrare
-            window.location.href = '/register'; // sau altă metodă de redirecționare
+            window.location.href = '/'; // sau altă metodă de redirecționare
         } catch (error) {
             console.error('Eroare la delogare:', error);
         }

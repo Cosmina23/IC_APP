@@ -1,13 +1,36 @@
-body {
+body{
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+
+.main-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.start-container {
+  position: relative;
+  z-index: 1; /* Asigură poziționarea peste fundal */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 88vh;
+  width: 96vw; /* Lățimea ecranului vizibil */
+  height: 90.8vh; /* Înălțimea ecranului vizibil */
+  padding: 0 20px; /* Spațiere laterală pentru butoane și imagine */
+  background-color: rgb(127, 107, 144); /* Fundal mov */
+  border: 35px solid black;
+  border-radius: 10px; /* Rotunjește marginile */
+}
+
+.container1 {
+  text-align: center; /* Aliniere textului în mijloc */
 }

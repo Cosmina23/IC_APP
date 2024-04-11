@@ -31,7 +31,7 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseCors(options => options
-.WithOrigins(new[] { "http://localhost::3000" }) //for react
+.WithOrigins( "http://localhost:3000") //for react
 .AllowAnyHeader()
 .AllowAnyMethod()
 .AllowCredentials()); //!!!

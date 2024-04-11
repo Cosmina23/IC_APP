@@ -1,0 +1,52 @@
+.inputs-register {
+    margin: 0 10px;
+    padding: 0px 10px;
+    background-color: #5f5576;
+    border: none;
+    border-radius: 5px;
+    display: flex;
+    height: 250px;
+    flex-direction: column; /* Afișează elementele pe verticală */
+    align-items: center; /* Aliniază elementele pe axa orizontală în centrul containerului */
+  }
+
+.creare_cont_btn{
+    margin-top: 20px;
+}
+
+.start-c1{
+    text-align: center;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.start-container {
+    display: flex;
+    justify-content: center; /* Aliniere pe axa orizontală în centrul paginii */
+    align-items: center; /* Aliniere pe axa verticală în centrul paginii */
+  }
+  
+.start-creare {
+    text-align: center; /* Aliniere textului în mijloc */
+    max-width: 400px; /* Stabilește o lățime maximă pentru .start-creare */
+    margin-right: 50px; /* Setați un spațiu între formular și imaginea Logo */
+}
+  
+.img-class {
+    margin-left: 50px; /* Setați un spațiu între imaginea Logo și formular */
+}
+
+
+.inputs-register input {
+    margin-top: 25px;
+    width: 250px; /* Setează lățimea casetelor de input la 100% din lățimea containerului lor */
+}
+  
+@keyframes animate{
+    0%{
+        transform: rotate(0deg);
+    }
+    100%{
+        transform: rotate(350deg);
+    }
+}
