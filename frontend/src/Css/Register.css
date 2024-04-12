@@ -38,6 +38,7 @@
 
 
 .inputs-register input {
+    background-color: rgb(255, 255, 255);
     margin-top: 25px;
     width: 250px; /* Setează lățimea casetelor de input la 100% din lățimea containerului lor */
 }
@@ -49,4 +50,13 @@
     100%{
         transform: rotate(350deg);
     }
+}
+
+.creare_cont_btn button{
+    color: #faf8ff;
+    background-color:#5f5576;
+}
+
+.container1 p{
+    color: white;
 }
