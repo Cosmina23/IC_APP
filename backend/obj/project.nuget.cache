@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "dv7RFTGgs4M8aD9oLOgdzWVSnlV7lI0DP+SD/IIUGyNQ1u8lrOJsMwZ1RVYtdkpJ5NHsYcU2c7rqvl70lVg06A==",
+  "dgSpecHash": "DRtUv1h/tESnZxCyFKt6zt6Y+TvCCa3xieMhd/wX/Bohh8hgWhX6EFXY/2bQRBS3lOkOg7/VRauENB7tEur/Jg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Nico\\Desktop\\IC\\backend\\backend.csproj",
+  "projectFilePath": "C:\\Users\\Nico\\Desktop\\IC\\IC_APP\\backend\\backend.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Nico\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",
     "C:\\Users\\Nico\\.nuget\\packages\\azure.identity\\1.10.3\\azure.identity.1.10.3.nupkg.sha512",

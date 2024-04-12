@@ -24,5 +24,9 @@ namespace backend.Models
         [Column(TypeName = "nvarchar(150)")]
         [JsonIgnore] //to not return the password for get
         public string Password { get; set; } = string.Empty;
+
+        [Column(TypeName = "nvarchar(100)")]
+        public string AvatarPath { get; set; } = string.Empty;
+
     }
 }

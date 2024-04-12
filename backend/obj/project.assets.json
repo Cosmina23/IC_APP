@@ -4492,11 +4492,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Nico\\Desktop\\IC\\backend\\backend.csproj",
+      "projectUniqueName": "C:\\Users\\Nico\\Desktop\\IC\\IC_APP\\backend\\backend.csproj",
       "projectName": "backend",
-      "projectPath": "C:\\Users\\Nico\\Desktop\\IC\\backend\\backend.csproj",
+      "projectPath": "C:\\Users\\Nico\\Desktop\\IC\\IC_APP\\backend\\backend.csproj",
       "packagesPath": "C:\\Users\\Nico\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Nico\\Desktop\\IC\\backend\\obj\\",
+      "outputPath": "C:\\Users\\Nico\\Desktop\\IC\\IC_APP\\backend\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Nico\\AppData\\Roaming\\NuGet\\NuGet.Config",

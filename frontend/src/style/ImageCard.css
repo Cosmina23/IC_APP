@@ -1,0 +1,20 @@
+.image-gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Creează un grid cu 3 coloane egale */
+    gap: 20px; /* Adăugați un spațiu între cardurile de imagine */
+  }
+  
+  .image-card {
+    width: calc(50% - 20px); /* Calculează lățimea fiecărui card de imagine pentru a se încadra în grid */
+    margin-bottom: 20px; /* Adăugați un margin-bottom pentru a separa rândurile */
+    justify-self: center; /* Centrează elementul în interiorul spațiului său */
+  }
+  
+  
+  .image-card img {
+    width: 100%; /* Face ca imaginea să se întindă pe întreaga lățime a cardului */
+    height: auto; /* Asigură proporții corecte ale imaginii */
+    max-height: 150px; /* Stabiliți o înălțime maximă pentru a nu depăși înălțimea cardului */
+    object-fit: cover; /* Face ca imaginea să se potrivească în card fără a-și pierde proporțiile */
+  }
+  
