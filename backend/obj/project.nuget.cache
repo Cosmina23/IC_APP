@@ -1,8 +1,14 @@
 {
   "version": 2,
+<<<<<<< HEAD
+  "dgSpecHash": "DRtUv1h/tESnZxCyFKt6zt6Y+TvCCa3xieMhd/wX/Bohh8hgWhX6EFXY/2bQRBS3lOkOg7/VRauENB7tEur/Jg==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Nico\\Desktop\\IC\\IC_APP\\backend\\backend.csproj",
+=======
   "dgSpecHash": "6pNsZKKBPA5HO++QayWG6yD6GgSRzi1Vu2/bfwTRS+mQpXD44Q+jXMc2XMaKryiNhTFDVl5s2B2kP16dSRDwrA==",
   "success": true,
   "projectFilePath": "C:\\Users\\Cosmina\\an3\\sem2\\ic\\ic_ap\\backend\\backend.csproj",
+>>>>>>> b022f1633b3b25299006580a93cb5aff52712f23
   "expectedPackageFiles": [
     "C:\\Users\\Cosmina\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",
     "C:\\Users\\Cosmina\\.nuget\\packages\\azure.identity\\1.10.3\\azure.identity.1.10.3.nupkg.sha512",

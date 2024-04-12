@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using backend.Models;
 using backend.Helpers;
+using Microsoft.Extensions.FileProviders;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -31,10 +32,17 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseCors(options => options
-.WithOrigins( "http://localhost:3000") //for react
+.WithOrigins(new[] { "http://localhost:3000" }) //for react
 .AllowAnyHeader()
 .AllowAnyMethod()
 .AllowCredentials()); //!!!
+
+app.UseStaticFiles(new StaticFileOptions
+{
+    FileProvider = new PhysicalFileProvider(
+        Path.Combine(builder.Environment.ContentRootPath, "Images")),
+    RequestPath = "/Images"
+}); //pentru ca react sa vada folderul de imagini
 
 app.UseAuthorization();
 

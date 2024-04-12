@@ -30,7 +30,8 @@ namespace backend.Controllers
                 Prenume = dto.Prenume,
                 Telefon = dto.Telefon,
                 Email = dto.Email,
-                Password = BCrypt.Net.BCrypt.HashPassword(dto.Password)
+                Password = BCrypt.Net.BCrypt.HashPassword(dto.Password),
+                AvatarPath = string.Empty
             };
 
             // Add the user to the context
@@ -88,6 +89,85 @@ namespace backend.Controllers
             (Exception ex)
             { return Unauthorized(); }
         }
+
+        [HttpPut("{id}")]
+        public IActionResult UpdateUser(int id, [FromBody] User updatedUser)
+        {
+            try
+            {
+                // Verificați dacă utilizatorul este autorizat
+                var jwt = Request.Cookies["jwt"];
+                Console.WriteLine("JWT:", jwt);
+                if (jwt != null)
+                {
+                    var token = _jwtService.Verify(jwt);
+                    int userId = int.Parse(token.Issuer);
+                    if (userId != id)
+                    {
+                        return Unauthorized(); // Utilizatorul nu este autorizat să modifice acest utilizator
+                    }
+                }
+
+
+                // Găsiți utilizatorul în baza de date
+                var user = _context.Users.FirstOrDefault(u => u.Id == id);
+                if (user == null)
+                {
+                    return NotFound(); // Utilizatorul nu a fost găsit în baza de date
+                }
+
+                // Actualizați datele utilizatorului
+                user.Nume = updatedUser.Nume;
+                user.Prenume = updatedUser.Prenume;
+                user.Telefon = updatedUser.Telefon;
+                user.AvatarPath = updatedUser.AvatarPath;
+
+                // Salvare modificări în baza de date
+                _context.SaveChanges();
+
+                return Ok(user); // Returnează utilizatorul actualizat
+            }
+            catch (Exception ex)
+            {
+                // Afișați detaliile erorii folosind metoda ToString() a obiectului Exception
+                Console.WriteLine("A apărut o eroare: " + ex.ToString());
+
+                // Întoarceți un cod de stare 500 (ServerError) și mesajul de eroare original
+                return StatusCode(500, ex.Message);
+            }
+
+        }
+
+        [Route("api/images")]
+        public class ImagesController : ControllerBase
+        {
+            [HttpGet]
+            public IActionResult GetImages()
+            {
+                var imagesDirectory = Path.Combine(Directory.GetCurrentDirectory(), "Images");
+                var imageFiles = Directory.GetFiles(imagesDirectory);
+                return Ok(imageFiles);
+            }
+        }
+
+        [HttpGet("images")]
+        public IActionResult GetImageList()
+        {
+            try
+            {
+                //lista de nume de fișiere de imagine din folderul cu imagini
+                var imageFiles = Directory.GetFiles("../backend/Images")
+                                          .Select(Path.GetFileName)
+                                          .ToList();
+
+                return Ok(imageFiles);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"A apărut o eroare: {ex.Message}");
+            }
+        }
+
 
         [HttpPost("Logout")]
         public IActionResult Logout()

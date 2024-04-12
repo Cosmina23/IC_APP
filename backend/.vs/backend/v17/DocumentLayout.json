@@ -1,5 +1,28 @@
 {
   "Version": 1,
+<<<<<<< HEAD
+  "WorkspaceRootPath": "C:\\Users\\Nico\\Desktop\\IC\\IC_APP\\backend\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{05DAB55B-A5D7-48CF-B2F4-BCE6F9C102D4}|backend.csproj|c:\\users\\nico\\desktop\\ic\\ic_app\\backend\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{05DAB55B-A5D7-48CF-B2F4-BCE6F9C102D4}|backend.csproj|solutionrelative:controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{05DAB55B-A5D7-48CF-B2F4-BCE6F9C102D4}|backend.csproj|c:\\users\\nico\\desktop\\ic\\ic_app\\backend\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{05DAB55B-A5D7-48CF-B2F4-BCE6F9C102D4}|backend.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{05DAB55B-A5D7-48CF-B2F4-BCE6F9C102D4}|backend.csproj|c:\\users\\nico\\desktop\\ic\\ic_app\\backend\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{05DAB55B-A5D7-48CF-B2F4-BCE6F9C102D4}|backend.csproj|solutionrelative:models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{05DAB55B-A5D7-48CF-B2F4-BCE6F9C102D4}|backend.csproj|c:\\users\\nico\\desktop\\ic\\ic_app\\backend\\models\\easybacdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{05DAB55B-A5D7-48CF-B2F4-BCE6F9C102D4}|backend.csproj|solutionrelative:models\\easybacdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{05DAB55B-A5D7-48CF-B2F4-BCE6F9C102D4}|backend.csproj|c:\\users\\nico\\desktop\\ic\\ic_app\\backend\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{05DAB55B-A5D7-48CF-B2F4-BCE6F9C102D4}|backend.csproj|solutionrelative:appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+=======
   "WorkspaceRootPath": "C:\\Users\\Cosmina\\an3\\sem2\\ic\\ic_ap\\backend\\",
   "Documents": [
     {
@@ -33,6 +56,7 @@
     {
       "AbsoluteMoniker": "D:0:0:{05DAB55B-A5D7-48CF-B2F4-BCE6F9C102D4}|backend.csproj|C:\\Users\\Cosmina\\an3\\sem2\\ic\\ic_ap\\backend\\helpers\\jwtservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{05DAB55B-A5D7-48CF-B2F4-BCE6F9C102D4}|backend.csproj|solutionrelative:helpers\\jwtservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+>>>>>>> b022f1633b3b25299006580a93cb5aff52712f23
     }
   ],
   "DocumentGroupContainers": [
@@ -42,6 +66,70 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
+<<<<<<< HEAD
+          "SelectedChildIndex": 4,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\Nico\\Desktop\\IC\\IC_APP\\backend\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "C:\\Users\\Nico\\Desktop\\IC\\IC_APP\\backend\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AQIAABUAAAAAAAAAAAAAAB0AAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-07T12:22:23.661Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "easyBacDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\Nico\\Desktop\\IC\\IC_APP\\backend\\Models\\easyBacDbContext.cs",
+              "RelativeDocumentMoniker": "Models\\easyBacDbContext.cs",
+              "ToolTip": "C:\\Users\\Nico\\Desktop\\IC\\IC_APP\\backend\\Models\\easyBacDbContext.cs",
+              "RelativeToolTip": "Models\\easyBacDbContext.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-07T09:24:32.447Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\Nico\\Desktop\\IC\\IC_APP\\backend\\appsettings.json",
+              "RelativeDocumentMoniker": "appsettings.json",
+              "ToolTip": "C:\\Users\\Nico\\Desktop\\IC\\IC_APP\\backend\\appsettings.json",
+              "RelativeToolTip": "appsettings.json",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAABBAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-03-24T15:40:45.376Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "User.cs",
+              "DocumentMoniker": "C:\\Users\\Nico\\Desktop\\IC\\IC_APP\\backend\\Models\\User.cs",
+              "RelativeDocumentMoniker": "Models\\User.cs",
+              "ToolTip": "C:\\Users\\Nico\\Desktop\\IC\\IC_APP\\backend\\Models\\User.cs",
+              "RelativeToolTip": "Models\\User.cs",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAAABwAAAA9AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-24T15:40:34.315Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "AuthController.cs",
+              "DocumentMoniker": "C:\\Users\\Nico\\Desktop\\IC\\IC_APP\\backend\\Controllers\\AuthController.cs",
+              "RelativeDocumentMoniker": "Controllers\\AuthController.cs",
+              "ToolTip": "C:\\Users\\Nico\\Desktop\\IC\\IC_APP\\backend\\Controllers\\AuthController.cs",
+              "RelativeToolTip": "Controllers\\AuthController.cs",
+              "ViewState": "AQIAAJMAAAAAAAAAAAAAAIoAAAAJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-07T09:24:44.078Z",
+              "EditorCaption": ""
+=======
           "SelectedChildIndex": 1,
           "Children": [
             {
@@ -140,6 +228,7 @@
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAABcAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-03-30T12:35:01.473Z"
+>>>>>>> b022f1633b3b25299006580a93cb5aff52712f23
             }
           ]
         }
