@@ -4487,19 +4487,32 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Nico\\.nuget\\packages\\": {}
+    "C:\\Users\\Cosmina\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
+<<<<<<< HEAD
       "projectUniqueName": "C:\\Users\\Nico\\Desktop\\IC\\IC_APP\\backend\\backend.csproj",
       "projectName": "backend",
       "projectPath": "C:\\Users\\Nico\\Desktop\\IC\\IC_APP\\backend\\backend.csproj",
       "packagesPath": "C:\\Users\\Nico\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\Nico\\Desktop\\IC\\IC_APP\\backend\\obj\\",
+=======
+      "projectUniqueName": "C:\\Users\\Cosmina\\an3\\sem2\\ic\\ic_ap\\backend\\backend.csproj",
+      "projectName": "backend",
+      "projectPath": "C:\\Users\\Cosmina\\an3\\sem2\\ic\\ic_ap\\backend\\backend.csproj",
+      "packagesPath": "C:\\Users\\Cosmina\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Cosmina\\an3\\sem2\\ic\\ic_ap\\backend\\obj\\",
+>>>>>>> b022f1633b3b25299006580a93cb5aff52712f23
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "C:\\Users\\Nico\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Cosmina\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

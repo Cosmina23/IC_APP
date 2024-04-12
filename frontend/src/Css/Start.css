@@ -1,0 +1,81 @@
+
+.button-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+}
+.button-container button {
+    margin: 0 10px;
+    padding: 15px 30px;
+    background-color: #5f5576;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.button-container button:hover {
+    background-color: #3c404d; /* Schimbă culoarea la hover */
+}
+
+
+.button-container p {
+    margin: 10px 0; /* Spațiere între butoane */
+}
+
+.img2 {
+    width: 350px; /* Setează lățimea imaginii */
+    height: auto; /* Asigură menținerea proporțiilor imaginii */
+    margin-right: 150px;
+    border-radius: 10px; /* Rotunjește marginile imaginii */
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.5); /* Adaugă o umbră albă în jurul imaginii */
+}
+
+
+.container1 p {
+    color: white;
+    margin: 10px 0; /* Spațiere între paragrafe */
+}
+
+.text1{
+    font-family:cursive;
+    font-size: 30px;
+}
+.text1,
+.text2 {
+    color: initial; /* Pentru a asigura că culoarea textului este cea originală */
+    transition: color 0.3s, text-shadow 0.3s; /* Pentru a adăuga o tranziție la schimbarea culorii și umbrei textului */
+}
+
+.text1:hover,
+.text2:hover {
+    color: #fff; /* Schimbă culoarea textului la alb când mouse-ul este deasupra */
+    text-shadow: 0 0 10px #03bcf4, 0 0 20px #03bcf4; /* Adaugă umbre textului când mouse-ul este deasupra */
+}
+
+
+.text12{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 35px;
+    font-weight: bold;
+}
+
+.text2{
+    font-family:sans-serif;
+    font-size: 25px;
+}
+
+
+@media screen and (max-width: 800px) {
+    .img-class {
+        display: none !important;
+    }
+  }
+  
+  @media screen and (min-width: 801px){
+    .img1{
+        display: none;
+    }
+  }
