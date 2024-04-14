@@ -29,6 +29,10 @@ body{
   background-color: rgb(127, 107, 144); /* Fundal mov */
   border: 35px solid black;
   border-radius: 10px; /* Rotunjește marginile */
+
+  overflow: hidden; /* Pentru a asigura că umbra nu iese în afara containerului */
+  box-shadow: inset 0 0 0 25px rgba(0, 0, 0, 0.5); /* Opacitate initiala 0.5 */
+
 }
 
 .container1 {

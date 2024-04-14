@@ -26,9 +26,10 @@
 }
 
 .img2 {
-    width: 350px; /* Setează lățimea imaginii */
-    height: auto; /* Asigură menținerea proporțiilor imaginii */
-    margin-right: 150px;
+    width: 450px; /* Setează lățimea imaginii */
+    height: 600px; /* Asigură menținerea proporțiilor imaginii */
+    margin-left: 70PX;
+    margin-right: 70px;
     border-radius: 10px; /* Rotunjește marginile imaginii */
     box-shadow: 0 0 20px rgba(255, 255, 255, 0.5); /* Adaugă o umbră albă în jurul imaginii */
 }
