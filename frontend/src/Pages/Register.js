@@ -10,7 +10,7 @@ const Register = () => {
     const [nume, setNume] = useState('');
     const [prenume, setPrenume] = useState('');
     const [telefon, setTelefon] = useState('');
-    const [parola, setParola] = useState('');
+    const [password, setPassword] = useState('');
     const navigate  = useNavigate();
 
     const [redirect, setRedirect] = useState(false);
@@ -28,7 +28,7 @@ const Register = () => {
                 prenume,
                 telefon,
                 email,
-                parola
+                password
             })
         });
         //daca backend a raspuns
@@ -72,7 +72,7 @@ const Register = () => {
                   onChange={e => setTelefon(e.target.value)}
                   />
                   <input type='password' className='par_class'  autoComplete="PAROLA" placeholder='Parola'required
-                  onChange={e => setParola(e.target.value)}
+                  onChange={e => setPassword(e.target.value)}
                   />
                 </div>    
                 <div className='creare_cont_btn'>
