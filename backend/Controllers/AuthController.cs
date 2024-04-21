@@ -106,11 +106,6 @@ namespace backend.Controllers
                         return Unauthorized(); // Utilizatorul nu este autorizat să modifice acest utilizator
                     }
                 }
-                else
-                    return Ok(new
-                    {
-                        message = "nu exista biscuite"
-                    });
 
 
                 // Găsiți utilizatorul în baza de date
