@@ -3,30 +3,34 @@
   "WorkspaceRootPath": "C:\\Users\\Nico\\Desktop\\IC\\IC_APP\\backend\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{05DAB55B-A5D7-48CF-B2F4-BCE6F9C102D4}|backend.csproj|c:\\users\\nico\\desktop\\ic\\ic_app\\backend\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{05DAB55B-A5D7-48CF-B2F4-BCE6F9C102D4}|backend.csproj|C:\\Users\\Nico\\Desktop\\IC\\IC_APP\\backend\\models\\easybacdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{05DAB55B-A5D7-48CF-B2F4-BCE6F9C102D4}|backend.csproj|solutionrelative:models\\easybacdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{05DAB55B-A5D7-48CF-B2F4-BCE6F9C102D4}|backend.csproj|C:\\Users\\Nico\\Desktop\\IC\\IC_APP\\backend\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{05DAB55B-A5D7-48CF-B2F4-BCE6F9C102D4}|backend.csproj|solutionrelative:models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{05DAB55B-A5D7-48CF-B2F4-BCE6F9C102D4}|backend.csproj|C:\\Users\\Nico\\Desktop\\IC\\IC_APP\\backend\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{05DAB55B-A5D7-48CF-B2F4-BCE6F9C102D4}|backend.csproj|solutionrelative:controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{05DAB55B-A5D7-48CF-B2F4-BCE6F9C102D4}|backend.csproj|c:\\users\\nico\\desktop\\ic\\ic_app\\backend\\dtos\\registerdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{05DAB55B-A5D7-48CF-B2F4-BCE6F9C102D4}|backend.csproj|C:\\Users\\Nico\\Desktop\\IC\\IC_APP\\backend\\dtos\\registerdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{05DAB55B-A5D7-48CF-B2F4-BCE6F9C102D4}|backend.csproj|solutionrelative:dtos\\registerdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{05DAB55B-A5D7-48CF-B2F4-BCE6F9C102D4}|backend.csproj|c:\\users\\nico\\desktop\\ic\\ic_app\\backend\\backend.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "AbsoluteMoniker": "D:0:0:{05DAB55B-A5D7-48CF-B2F4-BCE6F9C102D4}|backend.csproj|C:\\Users\\Nico\\Desktop\\IC\\IC_APP\\backend\\backend.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
       "RelativeMoniker": "D:0:0:{05DAB55B-A5D7-48CF-B2F4-BCE6F9C102D4}|backend.csproj|solutionrelative:backend.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\MSBuild\\Current\\Bin\\amd64\\Microsoft.Common.CurrentVersion.targets||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{05DAB55B-A5D7-48CF-B2F4-BCE6F9C102D4}|backend.csproj|c:\\users\\nico\\desktop\\ic\\ic_app\\backend\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{05DAB55B-A5D7-48CF-B2F4-BCE6F9C102D4}|backend.csproj|C:\\Users\\Nico\\Desktop\\IC\\IC_APP\\backend\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{05DAB55B-A5D7-48CF-B2F4-BCE6F9C102D4}|backend.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{05DAB55B-A5D7-48CF-B2F4-BCE6F9C102D4}|backend.csproj|c:\\users\\nico\\desktop\\ic\\ic_app\\backend\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{05DAB55B-A5D7-48CF-B2F4-BCE6F9C102D4}|backend.csproj|solutionrelative:models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{05DAB55B-A5D7-48CF-B2F4-BCE6F9C102D4}|backend.csproj|c:\\users\\nico\\desktop\\ic\\ic_app\\backend\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "AbsoluteMoniker": "D:0:0:{05DAB55B-A5D7-48CF-B2F4-BCE6F9C102D4}|backend.csproj|C:\\Users\\Nico\\Desktop\\IC\\IC_APP\\backend\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
       "RelativeMoniker": "D:0:0:{05DAB55B-A5D7-48CF-B2F4-BCE6F9C102D4}|backend.csproj|solutionrelative:appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     }
   ],
@@ -37,11 +41,24 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 6,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
+              "Title": "easyBacDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\Nico\\Desktop\\IC\\IC_APP\\backend\\Models\\easyBacDbContext.cs",
+              "RelativeDocumentMoniker": "Models\\easyBacDbContext.cs",
+              "ToolTip": "C:\\Users\\Nico\\Desktop\\IC\\IC_APP\\backend\\Models\\easyBacDbContext.cs",
+              "RelativeToolTip": "Models\\easyBacDbContext.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-20T20:42:12.913Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "RegisterDto.cs",
               "DocumentMoniker": "C:\\Users\\Nico\\Desktop\\IC\\IC_APP\\backend\\Dtos\\RegisterDto.cs",
               "RelativeDocumentMoniker": "Dtos\\RegisterDto.cs",
@@ -49,12 +66,11 @@
               "RelativeToolTip": "Dtos\\RegisterDto.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-14T16:30:28.864Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-14T16:30:28.864Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 4,
               "Title": "backend.csproj",
               "DocumentMoniker": "C:\\Users\\Nico\\Desktop\\IC\\IC_APP\\backend\\backend.csproj",
               "RelativeDocumentMoniker": "backend.csproj",
@@ -66,7 +82,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 5,
               "Title": "Microsoft.Common.CurrentVersion.targets",
               "DocumentMoniker": "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\MSBuild\\Current\\Bin\\amd64\\Microsoft.Common.CurrentVersion.targets",
               "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\..\\Program Files\\Microsoft Visual Studio\\2022\\Community\\MSBuild\\Current\\Bin\\amd64\\Microsoft.Common.CurrentVersion.targets",
@@ -78,7 +94,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 6,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\Nico\\Desktop\\IC\\IC_APP\\backend\\Program.cs",
               "RelativeDocumentMoniker": "Program.cs",
@@ -90,7 +106,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "appsettings.json",
               "DocumentMoniker": "C:\\Users\\Nico\\Desktop\\IC\\IC_APP\\backend\\appsettings.json",
               "RelativeDocumentMoniker": "appsettings.json",
@@ -102,28 +118,27 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 1,
               "Title": "User.cs",
               "DocumentMoniker": "C:\\Users\\Nico\\Desktop\\IC\\IC_APP\\backend\\Models\\User.cs",
               "RelativeDocumentMoniker": "Models\\User.cs",
               "ToolTip": "C:\\Users\\Nico\\Desktop\\IC\\IC_APP\\backend\\Models\\User.cs",
               "RelativeToolTip": "Models\\User.cs",
-              "ViewState": "AQIAAAYAAAAAAAAAAAAAABwAAAA9AAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABwAAAA9AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-03-24T15:40:34.315Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "AuthController.cs",
               "DocumentMoniker": "C:\\Users\\Nico\\Desktop\\IC\\IC_APP\\backend\\Controllers\\AuthController.cs",
               "RelativeDocumentMoniker": "Controllers\\AuthController.cs",
               "ToolTip": "C:\\Users\\Nico\\Desktop\\IC\\IC_APP\\backend\\Controllers\\AuthController.cs",
               "RelativeToolTip": "Controllers\\AuthController.cs",
-              "ViewState": "AQIAAA4AAAAAAAAAAAAswCEAAAApAAAA",
+              "ViewState": "AQIAAFQAAAAAAAAAAAAAAGkAAABtAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-07T09:24:44.078Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-07T09:24:44.078Z"
             }
           ]
         }
