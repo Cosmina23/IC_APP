@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using backend.Models;
 
 namespace backend.Models
 {
@@ -12,5 +13,6 @@ namespace backend.Models
         {
             modelBuilder.Entity<User>(entity => { entity.HasIndex(e => e.Email).IsUnique(); }); //email should be unique
         }
+        public DbSet<backend.Models.Question> Question { get; set; } = default!;
     }
 }

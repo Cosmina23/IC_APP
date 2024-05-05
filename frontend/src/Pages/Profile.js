@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Popup from '../Components/Popup';
+import "../Css/Profile.css";
+import { Link } from 'react-router-dom';
+import Home from '../resources/home1.png';
 
 const Profile = () => {
 
@@ -12,7 +15,7 @@ const Profile = () => {
     const [loggedIn, setLoggedIn] = useState(false);
     const [avatarPaths, setAvatarPaths] = useState([]);
     const [buttonPopup, setButtonPopup] = useState(false);
-
+    
     const handleLogout = async () => {
         try {
             await fetch('http://localhost:5269/api/Logout', {
@@ -121,14 +124,17 @@ const Profile = () => {
       
 
     return (
-        <div>
-            <h1 style={{'textAlign': 'center'}}>Profilul Utilizatorului</h1>
+        <div className='container'>
+        <div className='header'>
+            <Link to='/home'><img src={Home} alt='Imagine' className='img-home' /></Link>
+            <h1>Profilul Meu</h1>
+        </div>
             {loggedIn ? (
-                <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '80vh' }}>
-                    <div className='pozaUser'>
-                        <h2>Poza de profil</h2>
-                        <img src={`http://localhost:5269/Images/${avatar}`} alt="Descriere imagine" 
-                            style={{ width: '200px', height: 'auto' }}/>
+                <div className='profil-container'>
+                    
+
+                    <div className='left-section'>
+                        <img className='imgProfil' src={`http://localhost:5269/Images/${avatar}`} alt="Descriere imagine" style={{ width: '400px', height: '300' }}/>
 
                         <div>
                             <button onClick={() => {
@@ -136,16 +142,18 @@ const Profile = () => {
                                 handlePopupClick();
                             }}>Schimba poza</button>
                         </div>
-
-                        <div>
-                            <Popup trigger={buttonPopup} setTrigger={setButtonPopup} avatars={avatarPaths} setAvatarFunction={setAvatar}>
+                        
+                        <div className='pp'>
+                            <Popup className='pop' trigger={buttonPopup} setTrigger={setButtonPopup} avatars={avatarPaths} setAvatarFunction={setAvatar}>
                                 <h1>my popup</h1>
                                 <button ></button>
                             </Popup>
                         </div>
                     </div>
-
-                    <div className="dateUser" style={{ textAlign: 'center', fontSize: '1.5rem' }}>
+                    
+                    <div>
+                    <div className="dateUser">
+                        <div>
                         <div>
                             <label>
                                 Nume:
@@ -166,16 +174,20 @@ const Profile = () => {
                                 <input type="text" name="telefon" value={`${telefon}`} onChange={handleTelefonChange}/>
                             </label>
                         </div>
+                        </div>
 
-                        <br></br>
-                        <button onClick={handleUpdateClick}>Modifica</button>
-
-                        <br></br>
-                        <button onClick={handleLogout}>Delogare</button>
+                        <div className='but'>
+                            <button className='btn' onClick={handleUpdateClick}>Salveaza modificarile</button>
+                            <button className='btn' onClick={handleLogout}>Delogare</button>
+                        </div>
+                    </div>
+                    <div className='tabel'>
+                        TABEL NIVEL
+                    </div>
                     </div>
                 </div>
             ) : (
-                <div style={{ textAlign: 'center', fontSize: '1.5rem' }}>
+                <div>
                     <p>Nu sunteți conectat</p>
                 </div>
             )}
