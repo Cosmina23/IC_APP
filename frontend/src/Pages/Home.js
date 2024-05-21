@@ -1,22 +1,26 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from 'axios';
 import "../Css/Home.css";
 
 const Home = () => {
     const [name, setName] = useState('');
     const [loggedIn, setLoggedIn] = useState(false);
+    const [levels, setLevels] = useState([]);
     const [selectedLevel, setSelectedLevel] = useState(null);
+    const [menuOpen, setMenuOpen] = useState(false);
+    const [hoveredLevel, setHoveredLevel] = useState(null);
     const navigate = useNavigate();
 
     useEffect(() => {
-        const fetchData = async () => {
+        const fetchUserData = async () => {
             try {
-                const response = await fetch('http://localhost:5269/api/user', {
+                const response = await axios.get('http://localhost:5269/api/user', {
                     headers: { 'Content-Type': 'application/json' },
-                    credentials: 'include', //for cookies
+                    withCredentials: true // pentru cookies
                 });
-                if (response.ok) {
-                    const content = await response.json();
+                if (response.status === 200) {
+                    const content = response.data;
                     setName(content.nume);
                     setLoggedIn(true);
                 } else {
@@ -24,13 +28,35 @@ const Home = () => {
                 }
             } catch (error) {
                 console.error('Eroare la preluarea datelor utilizatorului:', error);
+                setLoggedIn(false);
             }
         };
 
-        fetchData();
+        fetchUserData();
     }, []);
 
-    const handleProfile = () =>{
+    useEffect(() => {
+        const fetchLevels = async () => {
+            try {
+                const response = await axios.get('http://localhost:5269/getLevels', {
+                    headers: { 'Content-Type': 'application/json' },
+                    withCredentials: true // pentru cookies
+                });
+                console.log('Response data:', response.data); // Debugging log
+                if (response.data.length > 0) {
+                    setLevels(response.data.sort((a, b) => a - b));
+                } else {
+                    console.log('No levels found');
+                }
+            } catch (error) {
+                console.error('Eroare la preluarea nivelelor:', error);
+            }
+        };
+
+        fetchLevels();
+    }, []);
+
+    const handleProfile = () => {
         navigate('/profile');
     }
 
@@ -38,7 +64,6 @@ const Home = () => {
         setSelectedLevel(level);
     }
 
-    
     const handlePlay = () => {
         if (selectedLevel !== null) {
             navigate(`/nivel?level=${selectedLevel}`);
@@ -46,19 +71,73 @@ const Home = () => {
             console.error('Niciun nivel selectat.');
         }
     }
-    
+
+    const toggleMenu = () => {
+        setMenuOpen(!menuOpen);
+    }
+
+    const handleLevelHover = (level) => {
+        setHoveredLevel(level);
+    }
+
+    const handleLevelLeave = () => {
+        setHoveredLevel(null);
+    }
+
+    const handleLogout = async () => {
+        try {
+            await axios.post('http://localhost:5269/api/Logout', null, {
+                withCredentials: true // pentru cookies
+            });
+            setLoggedIn(false);
+            navigate('/'); // Redirecționează către pagina de autentificare sau altă pagină dorită
+        } catch (error) {
+            console.error('Eroare la deconectare:', error);
+        }
+    };
+
     return (
-        <div>
-            {loggedIn ? `Bună, ${name}!` : 'Nu ești conectat.'}
-            <button type='submit' onClick={handleProfile}>Profil</button>
-            <div className="levels-container">
-                <button className="level" onClick={() => handleLevelSelect(1)}>Nivel 1</button>
-                <button className="level" onClick={() => handleLevelSelect(2)}>Nivel 2</button>
-                <button className="level" onClick={() => handleLevelSelect(3)}>Nivel 3</button>
-                <button className="level" onClick={() => handleLevelSelect(4)}>Nivel 4</button>
-                <button className="level" onClick={() => handleLevelSelect(5)}>Nivel 5</button>
-            </div>
-            <button type='submit' onClick={handlePlay}>Joacă</button>
+        <div className="container_home">
+            {loggedIn ? (
+                <>
+                    <div className="navbar_h">
+                        <p>NUME MATERIE SAU CEVA</p>
+                        <button className="menu-buttonH" onClick={toggleMenu}>Meniu</button>
+                        {menuOpen && (
+                            <div className="dropdown-menuH">
+                                <button className="buttonH" type='button' onClick={handleProfile}>Profil({name})</button>
+                                <button className="buttonH" type='button' onClick={() => navigate('/....')}>Link spre Materii</button>
+                                <button className="buttonH" type='button' onClick={handleLogout}>Deconectare</button>
+                            </div>
+                        )}
+                    </div>
+                    <div className="main-contentH">
+                        <div className="levels-wrapper">
+                            <div className="levels-container">
+                                {levels.length > 0 ? (
+                                    levels.map(level => (
+                                       <button 
+                                        key={level} 
+                                        className={`level ${selectedLevel === level ? 'selected' : ''} ${hoveredLevel === level ? 'hovered' : ''}`} 
+                                        onClick={() => handleLevelSelect(level)}
+                                        onMouseEnter={() => handleLevelHover(level)}
+                                        onMouseLeave={handleLevelLeave}>
+                                        Nivel {level}
+                                    </button>
+                                    ))
+                                ) : (
+                                    <p>Nu există nivele disponibile</p>
+                                )}
+                            </div>
+                            <button className="play-button" type='button' onClick={handlePlay}>Joacă</button>
+                        </div>
+                    </div>
+                </>
+            ) : (
+                <div className="not-logged-in">
+                    <p>Nu sunteți conectat!</p>
+                </div>
+            )}
         </div>
     );
 };

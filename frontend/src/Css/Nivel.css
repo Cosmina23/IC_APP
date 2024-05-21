@@ -1,0 +1,10 @@
+body {
+    background-color: rgb(180, 172, 188);
+    margin: 0; /* Resetare margini implicite */
+    padding: 0; /* Resetare padding implicit */
+    font-family: Arial, sans-serif; /* Stil de font implicit pentru întreaga pagină */
+}
+
+.container{
+    background-color: rgb(0, 0, 0);   
+}
