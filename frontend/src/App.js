@@ -9,6 +9,8 @@ import Register from './Pages/Register';
 import Login from './Pages/Login';
 import Home from './Pages/Home';
 import Profile from './Pages/Profile';
+import Nivel from './Pages/Nivel';
+import Rezultat from './Pages/Rezultat';
 
   
   const router = createBrowserRouter([
@@ -31,6 +33,14 @@ import Profile from './Pages/Profile';
     {
       path: '/profile',
       element: <Profile/>
+    },
+    {
+      path: '/nivel',
+      element: <Nivel/>
+    },
+    {
+      path: '/rezultat',
+      element: <Rezultat/>
     }
   ]);
 

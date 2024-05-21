@@ -31,7 +31,7 @@ namespace backend.Controllers
                 Telefon = dto.Telefon,
                 Email = dto.Email,
                 Password = BCrypt.Net.BCrypt.HashPassword(dto.Password),
-                AvatarPath = string.Empty
+                AvatarPath = "default.png"
             };
 
             // Add the user to the context
@@ -97,7 +97,6 @@ namespace backend.Controllers
             {
                 // Verificați dacă utilizatorul este autorizat
                 var jwt = Request.Cookies["jwt"];
-                Console.WriteLine("JWT:", jwt);
                 if (jwt != null)
                 {
                     var token = _jwtService.Verify(jwt);

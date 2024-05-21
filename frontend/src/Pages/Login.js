@@ -7,7 +7,7 @@ import Logo from '../resources/Logo.png'
 
 const Login = () => {
     const [email, setEmail] = useState('');
-    const [parola, setParola] = useState('');
+    const [password, setPassword] = useState('');
     const [redirect, setRedirect] = useState(false);
     const navigate = useNavigate();
 
@@ -22,7 +22,7 @@ const Login = () => {
                 credentials: 'include',//for cookies
                 body: JSON.stringify({
                     email,
-                    parola
+                    password
                 })
             });
             //if backend worked
@@ -55,7 +55,7 @@ const Login = () => {
                                 onChange={e => setEmail(e.target.value)}
                                 />
                                 <input type='text' className='par_class' autoComplete="PAROLA" placeholder='Parola' required
-                                onChange={e => setParola(e.target.value)}
+                                onChange={e => setPassword(e.target.value)}
                                 />
                                 {errorMessage && <p className="error-message">{errorMessage}</p>}
                                 <div className='creare_cont_btn'>
