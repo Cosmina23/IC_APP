@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using backend.Models;
 
@@ -10,9 +11,11 @@ using backend.Models;
 namespace backend.Migrations
 {
     [DbContext(typeof(easyBacDbContext))]
-    partial class easyBacDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240523074513_AddBiologyScoreTable")]
+    partial class AddBiologyScoreTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -44,9 +47,6 @@ namespace backend.Migrations
                     b.Property<int>("Level5Score")
                         .HasColumnType("int");
 
-                    b.Property<int>("TotalScore")
-                        .HasColumnType("int");
-
                     b.Property<int>("UserId")
                         .HasColumnType("int");
 
@@ -56,43 +56,6 @@ namespace backend.Migrations
                         .IsUnique();
 
                     b.ToTable("BiologyScores");
-                });
-
-            modelBuilder.Entity("backend.Models.HistoryScore", b =>
-                {
-                    b.Property<int>("ScoreId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ScoreId"));
-
-                    b.Property<int>("Level1Score")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Level2Score")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Level3Score")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Level4Score")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Level5Score")
-                        .HasColumnType("int");
-
-                    b.Property<int>("TotalScore")
-                        .HasColumnType("int");
-
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
-
-                    b.HasKey("ScoreId");
-
-                    b.HasIndex("UserId")
-                        .IsUnique();
-
-                    b.ToTable("HistoryScores");
                 });
 
             modelBuilder.Entity("backend.Models.Question", b =>
@@ -105,10 +68,6 @@ namespace backend.Migrations
 
                     b.Property<int>("Answer")
                         .HasColumnType("int");
-
-                    b.Property<string>("Course")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(100)");
 
                     b.Property<int>("Level")
                         .HasColumnType("int");
@@ -132,43 +91,6 @@ namespace backend.Migrations
                     b.HasKey("QnId");
 
                     b.ToTable("Question");
-                });
-
-            modelBuilder.Entity("backend.Models.RomanaScore", b =>
-                {
-                    b.Property<int>("ScoreId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ScoreId"));
-
-                    b.Property<int>("Level1Score")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Level2Score")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Level3Score")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Level4Score")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Level5Score")
-                        .HasColumnType("int");
-
-                    b.Property<int>("TotalScore")
-                        .HasColumnType("int");
-
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
-
-                    b.HasKey("ScoreId");
-
-                    b.HasIndex("UserId")
-                        .IsUnique();
-
-                    b.ToTable("RomanaScores");
                 });
 
             modelBuilder.Entity("backend.Models.User", b =>
@@ -214,30 +136,8 @@ namespace backend.Migrations
             modelBuilder.Entity("backend.Models.BiologyScore", b =>
                 {
                     b.HasOne("backend.Models.User", "User")
-                        .WithOne("ScoreBiology")
+                        .WithOne("BiologyScore")
                         .HasForeignKey("backend.Models.BiologyScore", "UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("User");
-                });
-
-            modelBuilder.Entity("backend.Models.HistoryScore", b =>
-                {
-                    b.HasOne("backend.Models.User", "User")
-                        .WithOne("ScoreHistory")
-                        .HasForeignKey("backend.Models.HistoryScore", "UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("User");
-                });
-
-            modelBuilder.Entity("backend.Models.RomanaScore", b =>
-                {
-                    b.HasOne("backend.Models.User", "User")
-                        .WithOne("ScoreRomana")
-                        .HasForeignKey("backend.Models.RomanaScore", "UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -246,13 +146,7 @@ namespace backend.Migrations
 
             modelBuilder.Entity("backend.Models.User", b =>
                 {
-                    b.Navigation("ScoreBiology")
-                        .IsRequired();
-
-                    b.Navigation("ScoreHistory")
-                        .IsRequired();
-
-                    b.Navigation("ScoreRomana")
+                    b.Navigation("BiologyScore")
                         .IsRequired();
                 });
 #pragma warning restore 612, 618

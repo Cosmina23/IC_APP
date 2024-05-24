@@ -60,7 +60,7 @@ const Rezultat = () => {
                 ))}
             </ul>
             
-            <br></br>
+
             <h2>Rezultate corecte</h2>
             <ul>
                 {correctAnswers.map((answer, index) => (
@@ -69,7 +69,11 @@ const Rezultat = () => {
             </ul>
 
             <div>Raspunsuri corecte: {result}</div>
-
+            
+            <br></br>
+            {result === 3 && ( // Afisează butonul Next doar dacă mai există întrebări
+                <div>Ai raspuns corect la toate intrebarile. Ai trecut la nivelul urmator!</div>
+            )}
 
         </div>
     );

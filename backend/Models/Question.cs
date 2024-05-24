@@ -23,5 +23,8 @@ namespace backend.Models
         public int Answer { get; set; }
 
         public int Level { get; set; }
+
+        [Column(TypeName = "nvarchar(100)")]
+        public string Course { get; set; } = string.Empty;
     }
 }

@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using backend.Models;
+using Microsoft.AspNetCore.Authorization;
+using backend.Dtos;
 
 namespace backend.Controllers
 {
@@ -42,13 +44,13 @@ namespace backend.Controllers
                     QuestionAsked = x.QuestionAsked,
                     Options = new string[] { x.Option1, x.Option2, x.Option3 }
                 })
-                .OrderBy(y => Guid.NewGuid()) //ordine aleatoare de fiecare data
+                //.OrderBy(y => Guid.NewGuid()) //ordine aleatoare de fiecare data
                 ).ToListAsync();
 
             return Ok(questions);
         }
 
-        // POST: api/getAnswers
+        // api/getAnswers
         [HttpGet]
         [Route("getAnswers")]
         public async Task<ActionResult<Question>> RetrieveAnswers(int level)
@@ -65,135 +67,28 @@ namespace backend.Controllers
             return Ok(answers);
         }
 
-        //-------------------------------------------------------------------------------------------------------------------------
-
-        // GET: Questions/Details/5
-        public async Task<IActionResult> Details(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var question = await _context.Question
-                .FirstOrDefaultAsync(m => m.QnId == id);
-            if (question == null)
-            {
-                return NotFound();
-            }
-
-            return View(question);
-        }
-
-        // GET: Questions/Create
-        public IActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: Questions/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("QnId,QuestionAsked,Option1,Option2,Option3,Answer")] Question question)
+        // POST: api/addQuestion
+        [HttpPost("addQuestion")]
+        public async Task<ActionResult> AddQuestion(QuestionDto questionDto)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(question);
+                var question = new Question
+                {
+                    QuestionAsked = questionDto.QuestionAsked,
+                    Option1 = questionDto.Option1,
+                    Option2 = questionDto.Option2,
+                    Option3 = questionDto.Option3,
+                    Answer = questionDto.Answer,
+                    Level = questionDto.Level,
+                    Course = questionDto.Course
+                };
+
+                _context.Question.Add(question);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return Ok();
             }
-            return View(question);
-        }
-
-        // GET: Questions/Edit/5
-        public async Task<IActionResult> Edit(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var question = await _context.Question.FindAsync(id);
-            if (question == null)
-            {
-                return NotFound();
-            }
-            return View(question);
-        }
-
-        // POST: Questions/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("QnId,QuestionAsked,Option1,Option2,Option3,Answer")] Question question)
-        {
-            if (id != question.QnId)
-            {
-                return NotFound();
-            }
-
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    _context.Update(question);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!QuestionExists(question.QnId))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
-            }
-            return View(question);
-        }
-
-        // GET: Questions/Delete/5
-        public async Task<IActionResult> Delete(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var question = await _context.Question
-                .FirstOrDefaultAsync(m => m.QnId == id);
-            if (question == null)
-            {
-                return NotFound();
-            }
-
-            return View(question);
-        }
-
-        // POST: Questions/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
-        {
-            var question = await _context.Question.FindAsync(id);
-            if (question != null)
-            {
-                _context.Question.Remove(question);
-            }
-
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
-        }
-
-        private bool QuestionExists(int id)
-        {
-            return _context.Question.Any(e => e.QnId == id);
+            return BadRequest(ModelState);
         }
     }
 }

@@ -28,5 +28,9 @@ namespace backend.Models
         [Column(TypeName = "nvarchar(100)")]
         public string AvatarPath { get; set; } = string.Empty;
 
+        public BiologyScore ScoreBiology { get; set; } = null!;
+        public RomanaScore ScoreRomana { get; set; } = null!;
+        public HistoryScore ScoreHistory { get; set; } = null!;
+
     }
 }
