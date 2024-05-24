@@ -45,10 +45,8 @@ const Rezultat = () => {
     
 
     useEffect(() => {
-        if (correctAnswers.length === 3) {
             const matchingCount = counter(userAnswers, correctAnswers);
             setResult(matchingCount);
-        }
         
     }, [correctAnswers]);
 
