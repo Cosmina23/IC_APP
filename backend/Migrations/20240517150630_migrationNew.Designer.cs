@@ -11,8 +11,8 @@ using backend.Models;
 namespace backend.Migrations
 {
     [DbContext(typeof(easyBacDbContext))]
-    [Migration("20240504105719_changed nvarchar values")]
-    partial class changednvarcharvalues
+    [Migration("20240517150630_migrationNew")]
+    partial class migrationNew
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

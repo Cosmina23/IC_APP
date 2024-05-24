@@ -2,6 +2,7 @@
 import React, { useState, useEffect} from 'react';
 import { useNavigate } from "react-router-dom";
 import axios from 'axios';
+import '../Css/Nivel.css'
 
 const Nivel = () => {
     const params = new URLSearchParams(window.location.search);
@@ -42,23 +43,22 @@ const Nivel = () => {
     }
 
     return (
-        <div>
-
+        <div className='wrraper'>
             <div>
-                <h2>{`Question ${qnIndex + 1}`}</h2>
+                <h2 className='h2_nivel'>{`Question ${qnIndex + 1}`}</h2>
             </div>
 
             <ul>
                 {questions.map((question, index) => (
                     index === qnIndex && // Afișează doar întrebarea curentă
                     <li key={index}>
-                        <div>{question.questionAsked}</div>
+                        <div className='question_asked'>{question.questionAsked}</div>
                         <ul>
                             {question.options.map((option, optionIndex) => (
-                                <li key={optionIndex} style={{ listStyleType: 'none' }}>
+                                <li className='li_q' key={optionIndex} style={{ listStyleType: 'none' }}>
                                     {/* La selectarea unui răspuns, apelează funcția handleAnswer cu indexul opțiunii */}
-                                    <button onClick={() => handleAnswer(optionIndex, question.qnId)}>
-                                        {option}
+                                    <button className='btn_quest' onClick={() => handleAnswer(optionIndex, question.qnId)}>
+                                        <div className='li_q'>{option}</div>
                                     </button>
                                 </li>
                             ))}
@@ -69,14 +69,15 @@ const Nivel = () => {
             </ul>
 
             
+            <div className='result-button-container'>
+                {qnIndex < questions.length - 1 && ( // Afisează butonul Next doar dacă mai există întrebări
+                    <button className='btn_quest' onClick={handleNext}>Next</button>
+                )}
 
-            {qnIndex < questions.length - 1 && ( // Afisează butonul Next doar dacă mai există întrebări
-                <button onClick={handleNext}>Next</button>
-            )}
-
-            {qnIndex === questions.length - 1 && ( //daca s-a ajuns la ultima intrebare
-                <button onClick={handleShowResult}>Vezi Rezultat</button>
-            )}
+                {qnIndex === questions.length - 1 && ( //daca s-a ajuns la ultima intrebare
+                    <button className='btn_quest' onClick={handleShowResult}>Vezi Rezultat</button>
+                )}
+            </div>
         </div>
     );
 };

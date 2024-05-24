@@ -11,6 +11,8 @@ import Home from './Pages/Home';
 import Profile from './Pages/Profile';
 import Nivel from './Pages/Nivel';
 import Rezultat from './Pages/Rezultat';
+import Materie from './Pages/Materie'
+import HomeMaterie from './Pages/HomeMaterie';
 
   
   const router = createBrowserRouter([
@@ -41,6 +43,14 @@ import Rezultat from './Pages/Rezultat';
     {
       path: '/rezultat',
       element: <Rezultat/>
+    },
+    {
+      path: '/materie',
+      element: <Materie/>
+    },
+    {
+      path: '/homeMaterie',
+      element: <HomeMaterie/>
     }
   ]);
 

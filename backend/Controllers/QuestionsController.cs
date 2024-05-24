@@ -21,6 +21,16 @@ namespace backend.Controllers
             _context = context;
         }
 
+        // GET: /getLevels
+        [HttpGet("getLevels")]
+        public async Task<ActionResult<IEnumerable<int>>> GetLevels()
+        {
+            var levels = await (_context.Question
+                .Select(q => q.Level)
+                .Distinct()
+                .ToListAsync());
+            return Ok(levels);
+        }
 
         // GET: /getQuestions
         [HttpGet("getQuestions")] //GET /questions?level=1
