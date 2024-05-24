@@ -17,3 +17,6 @@ x64/
 #build/
 
 .vs/
+backend/.vs/
+backend/bin/
+backend/obj/

@@ -1,4 +1,5 @@
 import './App.css';
+import './../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import { 
     createBrowserRouter,
     RouterProvider,
@@ -13,6 +14,7 @@ import Nivel from './Pages/Nivel';
 import Rezultat from './Pages/Rezultat';
 import Materie from './Pages/Materie'
 import HomeMaterie from './Pages/HomeMaterie';
+import AddQuestions from './Pages/AddQuestions';
 
   
   const router = createBrowserRouter([
@@ -51,6 +53,10 @@ import HomeMaterie from './Pages/HomeMaterie';
     {
       path: '/homeMaterie',
       element: <HomeMaterie/>
+    },
+    {
+      path: '/addQuestions',
+      element: <AddQuestions/>
     }
   ]);
 

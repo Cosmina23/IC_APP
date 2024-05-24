@@ -32,20 +32,18 @@ namespace backend.Controllers
             return Ok(levels);
         }
 
-        // GET: /getQuestions
-        [HttpGet("getQuestions")] //GET /questions?level=1
-        public async Task<ActionResult<IEnumerable<Question>>> GetQuestions([FromQuery] int level)
+        [HttpGet("getQuestions")]
+        public async Task<ActionResult<IEnumerable<Question>>> GetQuestions([FromQuery] int level, [FromQuery] string course)
         {
-            var questions = await (_context.Question
-                .Where(q => q.Level == level)
+            var questions = await _context.Question
+                .Where(q => q.Level == level && q.Course == course)
                 .Select(x => new
                 {
-                    QnId = x.QnId, //sau doar x.QnId
+                    QnId = x.QnId,
                     QuestionAsked = x.QuestionAsked,
                     Options = new string[] { x.Option1, x.Option2, x.Option3 }
                 })
-                //.OrderBy(y => Guid.NewGuid()) //ordine aleatoare de fiecare data
-                ).ToListAsync();
+                .ToListAsync();
 
             return Ok(questions);
         }
@@ -68,8 +66,9 @@ namespace backend.Controllers
         }
 
         // POST: api/addQuestion
-        [HttpPost("addQuestion")]
-        public async Task<ActionResult> AddQuestion(QuestionDto questionDto)
+        [HttpPost]
+        [Route("addQuestion")]
+        public async Task<ActionResult> AddQuestion([FromBody] QuestionDto questionDto)
         {
             if (ModelState.IsValid)
             {
