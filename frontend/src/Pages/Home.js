@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import axios from 'axios';
 import "../Css/Home.css";
 
@@ -11,6 +11,8 @@ const Home = () => {
     const [menuOpen, setMenuOpen] = useState(false);
     const [hoveredLevel, setHoveredLevel] = useState(null);
     const navigate = useNavigate();
+    const location = useLocation();
+    const { selectedMaterie } = location.state || {}; // primește materia selectată
 
     useEffect(() => {
         const fetchUserData = async () => {
@@ -36,25 +38,27 @@ const Home = () => {
     }, []);
 
     useEffect(() => {
-        const fetchLevels = async () => {
-            try {
-                const response = await axios.get('http://localhost:5269/getLevels', {
-                    headers: { 'Content-Type': 'application/json' },
-                    withCredentials: true // pentru cookies
-                });
-                console.log('Response data:', response.data); // Debugging log
-                if (response.data.length > 0) {
-                    setLevels(response.data.sort((a, b) => a - b));
-                } else {
-                    console.log('No levels found');
+        if (selectedMaterie) {
+            const fetchLevels = async () => {
+                try {
+                    const response = await axios.get(`http://localhost:5269/getLevels?materie=${selectedMaterie}`, {
+                        headers: { 'Content-Type': 'application/json' },
+                        withCredentials: true // pentru cookies
+                    });
+                    console.log('Response data:', response.data); // Debugging log
+                    if (response.data.length > 0) {
+                        setLevels(response.data.sort((a, b) => a - b));
+                    } else {
+                        console.log('No levels found');
+                    }
+                } catch (error) {
+                    console.error('Eroare la preluarea nivelelor:', error);
                 }
-            } catch (error) {
-                console.error('Eroare la preluarea nivelelor:', error);
-            }
-        };
+            };
 
-        fetchLevels();
-    }, []);
+            fetchLevels();
+        }
+    }, [selectedMaterie]);
 
     const handleProfile = () => {
         navigate('/profile');
@@ -66,11 +70,12 @@ const Home = () => {
 
     const handlePlay = () => {
         if (selectedLevel !== null) {
-            navigate(`/nivel?level=${selectedLevel}`);
+            navigate(`/nivel?level=${selectedLevel}&materie=${selectedMaterie}`);
         } else {
             console.error('Niciun nivel selectat.');
         }
     }
+    
 
     const toggleMenu = () => {
         setMenuOpen(!menuOpen);
@@ -132,6 +137,14 @@ const Home = () => {
                             <button className="play-button" type='button' onClick={handlePlay}>Joacă</button>
                         </div>
                     </div>
+                    <div>
+                    <h1>Pagina Materie</h1>
+                        {selectedMaterie ? (
+                            <p>Butonul apăsat: {selectedMaterie}</p>
+                        ) : (
+                            <p>Niciun buton nu a fost apăsat.</p>
+                        )}
+        </div>
                 </>
             ) : (
                 <div className="not-logged-in">

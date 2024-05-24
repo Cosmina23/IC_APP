@@ -1,5 +1,4 @@
-// Nivel.js
-import React, { useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
 import axios from 'axios';
 import '../Css/Nivel.css'
@@ -7,6 +6,7 @@ import '../Css/Nivel.css'
 const Nivel = () => {
     const params = new URLSearchParams(window.location.search);
     const nivel = params.get('level');
+    const materie = params.get('materie');
     const [questions, setQuestions] = useState([]);
     const [answers, setAnswers] = useState([]); //răspunsurile utilizatorului
     const [qnIndex, setQnIndex] = useState(0);
@@ -15,7 +15,7 @@ const Nivel = () => {
     useEffect(() => {
         const fetchQuestions = async () => {
             try {
-                const response = await axios.get(`http://localhost:5269/getQuestions?level=${nivel}`);
+                const response = await axios.get(`http://localhost:5269/getQuestions?level=${nivel}&materie=${materie}`);
                 setQuestions(response.data);
             } catch (error) {
                 console.error('Error fetching questions:', error);
@@ -24,21 +24,20 @@ const Nivel = () => {
 
         fetchQuestions();
 
-    }, []);
+    }, [nivel, materie]);
 
     const handleAnswer = (selectedOptionIndex, idx) => {
         const updatedAnswers = [...answers];
         updatedAnswers[qnIndex] = { qnIndex: idx, selectedOption: selectedOptionIndex + 1 };
         setAnswers(updatedAnswers);
     };
-    
 
     const handleNext = () => {
         setQnIndex(prevIndex => prevIndex + 1);
     };
 
     const handleShowResult = () => {
-        navigate('/rezultat',{state:{answers: answers, nivel: nivel}});
+        navigate('/rezultat', { state: { answers: answers, nivel: nivel, materie: materie } });
         console.log(answers);
     }
 
@@ -68,7 +67,6 @@ const Nivel = () => {
                 ))}
             </ul>
 
-            
             <div className='result-button-container'>
                 {qnIndex < questions.length - 1 && ( // Afisează butonul Next doar dacă mai există întrebări
                     <button className='btn_quest' onClick={handleNext}>Next</button>

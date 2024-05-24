@@ -1,18 +1,18 @@
 import React from 'react';
-import {useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const HomeMaterie = () => {
     const navigate = useNavigate();
 
     const handleMaterieSelected = (selectedMaterie) => {
-        navigate('/materie', { state: { selectedMaterie } });
+        navigate('/home', { state: { selectedMaterie } });
     }
 
     return (
         <>
-            <button onClick={() => handleMaterieSelected(1)}> Buton Biologie </button>
-            <button onClick={() => handleMaterieSelected(2)}> Buton2 </button>
-            <button onClick={() => handleMaterieSelected(3)}> Buton3 </button>
+            <button onClick={() => handleMaterieSelected('Biologie')}> Buton Biologie </button>
+            <button onClick={() => handleMaterieSelected('Romana')}> Buton2 </button>
+            <button onClick={() => handleMaterieSelected('Istorie')}> Buton3 </button>
         </>
     );
 }
