@@ -12,10 +12,20 @@ const Nivel = () => {
     const [qnIndex, setQnIndex] = useState(0);
     const navigate = useNavigate();
 
+
+    useEffect(() => {
+        // Add the class to the body element
+        document.body.classList.add('nivel-background');
+        // Clean up: Remove the class when the component is unmounted
+        return () => {
+            document.body.classList.remove('nivel-background');
+        };
+    }, []);
+
     useEffect(() => {
         const fetchQuestions = async () => {
             try {
-                const response = await axios.get(`http://localhost:5269/getQuestions?level=${nivel}&materie=${materie}`);
+                const response = await axios.get(`http://localhost:5269/getQuestions?level=${nivel}&course=${materie}`);
                 setQuestions(response.data);
             } catch (error) {
                 console.error('Error fetching questions:', error);

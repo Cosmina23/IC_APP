@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate, useLocation, Link } from "react-router-dom";
 import axios from 'axios';
 import "../Css/Home.css";
+import { CSSTransition } from 'react-transition-group';
 
 const Home = () => {
     const [name, setName] = useState('');
@@ -75,7 +76,6 @@ const Home = () => {
             console.error('Niciun nivel selectat.');
         }
     }
-    
 
     const toggleMenu = () => {
         setMenuOpen(!menuOpen);
@@ -102,56 +102,56 @@ const Home = () => {
     };
 
     return (
-        <div className="container_home">
-            {loggedIn ? (
-                <>
-                    <div className="navbar_h">
-                        <p>NUME MATERIE SAU CEVA</p>
-                        <button className="menu-buttonH" onClick={toggleMenu}>Meniu</button>
-                        {menuOpen && (
-                            <div className="dropdown-menuH">
-                                <button className="buttonH" type='button' onClick={handleProfile}>Profil({name})</button>
-                                <button className="buttonH" type='button' onClick={() => navigate('/....')}>Link spre Materii</button>
-                                <button className="buttonH" type='button' onClick={handleLogout}>Deconectare</button>
-                            </div>
-                        )}
-                    </div>
-                    <div className="main-contentH">
-                        <div className="levels-wrapper">
-                            <div className="levels-container">
-                                {levels.length > 0 ? (
-                                    levels.map(level => (
-                                       <button 
-                                        key={level} 
-                                        className={`level ${selectedLevel === level ? 'selected' : ''} ${hoveredLevel === level ? 'hovered' : ''}`} 
-                                        onClick={() => handleLevelSelect(level)}
-                                        onMouseEnter={() => handleLevelHover(level)}
-                                        onMouseLeave={handleLevelLeave}>
-                                        Nivel {level}
-                                    </button>
-                                    ))
-                                ) : (
-                                    <p>Nu există nivele disponibile</p>
-                                )}
-                            </div>
-                            <button className="play-button" type='button' onClick={handlePlay}>Joacă</button>
+        <CSSTransition
+            in={loggedIn}
+            timeout={300}
+            classNames="fade"
+            unmountOnExit
+        >
+            <div className="container_home">
+                {loggedIn ? (
+                    <>
+                        <div className="navbar_h">
+                            <h1>{selectedMaterie}</h1>
+                            <button className="menu-buttonH" onClick={toggleMenu}>Meniu</button>
+                            {menuOpen && (
+                                <div className="dropdown-menuH">
+                                    <button className="buttonH" type='button' onClick={handleProfile}>Profil({name})</button>
+                                    <button className="buttonH" type='button' onClick={() => navigate('/homeMaterie')}>Link spre Materii</button>
+                                    <button className="buttonH" type='button' onClick={handleLogout}>Deconectare</button>
+                                </div>
+                            )}
                         </div>
+                        <div className="main-contentH">
+                            <div className="levels-wrapper">
+                                <div className="levels-container">
+                                    {levels.length > 0 ? (
+                                        levels.map(level => (
+                                           <button 
+                                            key={level} 
+                                            className={`level ${selectedLevel === level ? 'selected' : ''} ${hoveredLevel === level ? 'hovered' : ''}`} 
+                                            onClick={() => handleLevelSelect(level)}
+                                            onMouseEnter={() => handleLevelHover(level)}
+                                            onMouseLeave={handleLevelLeave}>
+                                            Nivel {level}
+                                        </button>
+                                        ))
+                                    ) : (
+                                        <p>Nu există nivele disponibile</p>
+                                    )}
+                                </div>
+                                <button className="play-button" type='button' onClick={handlePlay}>Joacă</button>
+                                <Link to={'/addQuestions'}>ADAUGA</Link>
+                            </div>
+                        </div>
+                    </>
+                ) : (
+                    <div className="not-logged-in">
+                        <p>Nu sunteți conectat!</p>
                     </div>
-                    <div>
-                    <h1>Pagina Materie</h1>
-                        {selectedMaterie ? (
-                            <p>Butonul apăsat: {selectedMaterie}</p>
-                        ) : (
-                            <p>Niciun buton nu a fost apăsat.</p>
-                        )}
-        </div>
-                </>
-            ) : (
-                <div className="not-logged-in">
-                    <p>Nu sunteți conectat!</p>
-                </div>
-            )}
-        </div>
+                )}
+            </div>
+        </CSSTransition>
     );
 };
 
