@@ -126,7 +126,7 @@ const Profile = () => {
     return (
         <div className='container'>
         <div className='header'>
-            <Link to='/home'><img src={Home} alt='Imagine' className='img-home' /></Link>
+            <Link to='/homeMaterie'><img src={Home} alt='Imagine' className='img-home' /></Link>
             <h1>Profilul Meu</h1>
         </div>
             {loggedIn ? (

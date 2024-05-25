@@ -19,7 +19,7 @@ const AddQuestions = () => {
               headers: {'Content-Type': 'application/json'},
               body: JSON.stringify({
                 questionAsked,
-                option1,
+                option1, 
                 option2,
                 option3,
                 answer: parseInt(answer, 10),

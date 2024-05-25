@@ -12,6 +12,16 @@ const Nivel = () => {
     const [qnIndex, setQnIndex] = useState(0);
     const navigate = useNavigate();
 
+
+    useEffect(() => {
+        // Add the class to the body element
+        document.body.classList.add('nivel-background');
+        // Clean up: Remove the class when the component is unmounted
+        return () => {
+            document.body.classList.remove('nivel-background');
+        };
+    }, []);
+
     useEffect(() => {
         const fetchQuestions = async () => {
             try {

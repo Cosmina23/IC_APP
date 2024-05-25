@@ -1,0 +1,52 @@
+/* Rezultat.css */
+.container_rez {
+    background-color: white;
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.h2_rez {
+    color: #333;
+}
+
+.ul_rez {
+    list-style-type: none;
+    padding: 0;
+}
+
+.li_rez {
+    background-color: #f9f9f9;
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.score_image {
+    max-width: 100xp;
+    height: auto;
+    max-height: 100px;
+    display: block;
+    margin: 20px auto;
+}
+
+.result_rez {
+    font-size: 1.2em;
+    margin-top: 20px;
+}
+
+.button_rez {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+}
+
+.button_rez:hover {
+    background-color: #45a049;
+}
