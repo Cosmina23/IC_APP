@@ -23,12 +23,19 @@ namespace backend.Controllers
 
         // GET: /getLevels
         [HttpGet("getLevels")]
-        public async Task<ActionResult<IEnumerable<int>>> GetLevels()
+        public async Task<ActionResult<IEnumerable<int>>> GetLevels(string materie)
         {
-            var levels = await (_context.Question
+            if (string.IsNullOrEmpty(materie))
+            {
+                return BadRequest("Materia is required.");
+            }
+
+            var levels = await _context.Question
+                .Where(q => q.Course == materie)
                 .Select(q => q.Level)
                 .Distinct()
-                .ToListAsync());
+                .ToListAsync();
+
             return Ok(levels);
         }
 
@@ -48,22 +55,23 @@ namespace backend.Controllers
             return Ok(questions);
         }
 
-        // api/getAnswers
+        //getAnswers
         [HttpGet]
-        [Route("getAnswers")]
-        public async Task<ActionResult<Question>> RetrieveAnswers(int level)
+        [Route("getAnswersWithIds")]
+        public async Task<ActionResult<IEnumerable<object>>> GetAnswers([FromQuery] int level, [FromQuery] string course)
         {
-            var answers = await (_context.Question
-                .Where(x => x.Level == level) // Filtru pentru nivelul specificat
+            var answers = await _context.Question
+                .Where(x => x.Level == level && x.Course == course)
                 .Select(y => new
                 {
                     y.QnId,
                     y.Answer
                 })
-                .ToListAsync());
+                .ToListAsync();
 
             return Ok(answers);
         }
+
 
         // POST: api/addQuestion
         [HttpPost]

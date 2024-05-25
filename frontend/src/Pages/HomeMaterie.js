@@ -10,9 +10,9 @@ const HomeMaterie = () => {
 
     return (
         <>
-            <button onClick={() => handleMaterieSelected('Biologie')}> Buton Biologie </button>
-            <button onClick={() => handleMaterieSelected('Romana')}> Buton2 </button>
-            <button onClick={() => handleMaterieSelected('Istorie')}> Buton3 </button>
+            <button onClick={() => handleMaterieSelected('Biologie')}>Biologie </button>
+            <button onClick={() => handleMaterieSelected('Romana')}> Romana </button>
+            <button onClick={() => handleMaterieSelected('Istorie')}>Istorie </button>
         </>
     );
 }

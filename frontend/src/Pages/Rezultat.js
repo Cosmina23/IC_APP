@@ -7,6 +7,7 @@ const Rezultat = () => {
     const location = useLocation();
     const userAnswers = location.state.answers;
     const nivel = location.state.nivel;
+    const materie = location.state.materie;
     const [correctAnswers, setCorrectAnswers] = useState([]);
     const [result, setResult] = useState(0);
 
@@ -32,10 +33,10 @@ const Rezultat = () => {
     useEffect(() => {
         const fetchAnswers = async () => {
             try {
-                const response = await axios.get(`http://localhost:5269/getAnswers?level=${nivel}`);
+                const response = await axios.get(`http://localhost:5269/getAnswersWithIds?level=${nivel}&course=${materie}`);
                 setCorrectAnswers(response.data);
             } catch (error) {
-                console.error('Error fetching questions:', error);
+                console.error('Error fetching answers:', error);
             }
         }
 
@@ -70,10 +71,6 @@ const Rezultat = () => {
 
             <div>Raspunsuri corecte: {result}</div>
             
-            <br></br>
-            {result === 3 && ( // Afisează butonul Next doar dacă mai există întrebări
-                <div>Ai raspuns corect la toate intrebarile. Ai trecut la nivelul urmator!</div>
-            )}
 
         </div>
     );

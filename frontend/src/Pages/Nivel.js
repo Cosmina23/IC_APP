@@ -15,7 +15,7 @@ const Nivel = () => {
     useEffect(() => {
         const fetchQuestions = async () => {
             try {
-                const response = await axios.get(`http://localhost:5269/getQuestions?level=${nivel}&materie=${materie}`);
+                const response = await axios.get(`http://localhost:5269/getQuestions?level=${nivel}&course=${materie}`);
                 setQuestions(response.data);
             } catch (error) {
                 console.error('Error fetching questions:', error);
