@@ -22,6 +22,7 @@ const Profile = () => {
                 method: 'POST',
                 credentials: 'include', // pentru cookies
             });
+            localStorage.removeItem('userId');
             // După ce utilizatorul este delogat, redirecționează-l către pagina de înregistrare
             window.location.href = '/'; // sau altă metodă de redirecționare
         } catch (error) {

@@ -67,7 +67,7 @@ namespace backend.Controllers
 
             return Ok(new
             {
-                message = "success"
+                userId = user.Id
             });
         }
 
