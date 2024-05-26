@@ -1,13 +1,12 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from "react-router-dom";
 import axios from 'axios';
 import '../Css/Rezultat.css'
 
 const Rezultat = () => {
-   
     const navigate = useNavigate();
     const location = useLocation();
-    const userAnswers = location.state.answers;
+    const userAnswers = location.state.answers || [];
     const nivel = location.state.nivel;
     const materie = location.state.materie;
     const [correctAnswers, setCorrectAnswers] = useState([]);
@@ -15,24 +14,19 @@ const Rezultat = () => {
     const [scoreImage, setScoreImage] = useState('');
     const [imagePath, setImagePath] = useState('');
 
-    
-    function checkCondition(element1, element2){
+    function checkCondition(element1, element2) {
         return element1.qnId === element2.qnIndex && element1.answer === element2.selectedOption;
     }
-    
+
     const counter = (userAnswers, answers) => {
-        return userAnswers.reduce((count, userAnswer) => {
-    
-            const matchingAnswer = answers.find(answer => checkCondition(answer, userAnswer));
-            //find  returns the value of the first array element that satisfies the provided test function
-    
-            if (matchingAnswer) {
+        return answers.reduce((count, answer) => {
+            const userAnswer = userAnswers.find(userAnswer => userAnswer.qnIndex === answer.qnId);
+            if (userAnswer && checkCondition(answer, userAnswer)) {
                 return count + 1;
             }
             return count;
         }, 0);
     };
-    
 
     useEffect(() => {
         const fetchAnswers = async () => {
@@ -45,9 +39,7 @@ const Rezultat = () => {
         }
 
         fetchAnswers();
-        
-    }, []);
-    
+    }, [nivel, materie]);
 
     useEffect(() => {
         if (correctAnswers.length > 0) {
@@ -69,7 +61,7 @@ const Rezultat = () => {
         } else if (scorePercentage <= 80) {
             folder = 'v_8_9';
         } else {
-            folder = 'v_9_10';
+            folder = 'v_10';
         }
         const randomImage = Math.floor(Math.random() * 5) + 1;
         const path = `/resources/${folder}/${randomImage}.png`;
@@ -78,10 +70,8 @@ const Rezultat = () => {
     }
 
     const navigateHome = () => {
-        navigate('/home');
+        navigate('/homeMaterie');
     }
-
-
 
     return (
         <div className='container_rez'>
@@ -91,12 +81,11 @@ const Rezultat = () => {
                     <li className='li_rez' key={index}>{`Intrebarea ${index + 1}: Raspunsul cu id ${answer.qnIndex} este ${answer.selectedOption}`}</li>
                 ))}
             </ul>
-            
 
             <h2>Rezultate corecte</h2>
             <ul>
                 {correctAnswers.map((answer, index) => (
-                    <li className='li-rez' key={index}>{`Intrebarea ${index + 1}: Raspunsul cu id ${answer.qnId} este ${answer.answer}`}</li>
+                    <li className='li_rez' key={index}>{`Intrebarea ${index + 1}: Raspunsul cu id ${answer.qnId} este ${answer.answer}`}</li>
                 ))}
             </ul>
 
@@ -110,7 +99,6 @@ const Rezultat = () => {
                 <div>Ai raspuns corect la toate intrebarile. Ai trecut la nivelul urmator!</div>
             )}
             <button className='button_rez' onClick={navigateHome}>Pagina Home</button>
-
         </div>
     );
 };

@@ -1,17 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
 import axios from 'axios';
-import '../Css/Nivel.css'
+import '../Css/Nivel.css';
 
 const Nivel = () => {
     const params = new URLSearchParams(window.location.search);
     const nivel = params.get('level');
     const materie = params.get('materie');
     const [questions, setQuestions] = useState([]);
-    const [answers, setAnswers] = useState([]); //răspunsurile utilizatorului
+    const [answers, setAnswers] = useState([]); // răspunsurile utilizatorului
     const [qnIndex, setQnIndex] = useState(0);
+    const [timeLeft, setTimeLeft] = useState(300); // 5 minutes in seconds
     const navigate = useNavigate();
-
 
     useEffect(() => {
         // Add the class to the body element
@@ -33,8 +33,36 @@ const Nivel = () => {
         }
 
         fetchQuestions();
-
     }, [nivel, materie]);
+
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            handleShowResult();
+        }, 300000); // 5 minutes in milliseconds
+
+        return () => clearTimeout(timer); // Clean up the timer on unmount
+    }, [answers, navigate, nivel, materie]);
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setTimeLeft(prevTimeLeft => {
+                if (prevTimeLeft <= 1) {
+                    clearInterval(interval);
+                    handleShowResult();
+                    return 0;
+                }
+                return prevTimeLeft - 1;
+            });
+        }, 1000);
+
+        return () => clearInterval(interval);
+    }, [navigate, answers, nivel, materie]);
+
+    const formatTime = (seconds) => {
+        const minutes = Math.floor(seconds / 60);
+        const remainingSeconds = seconds % 60;
+        return `${minutes}:${remainingSeconds < 10 ? '0' : ''}${remainingSeconds}`;
+    };
 
     const handleAnswer = (selectedOptionIndex, idx) => {
         const updatedAnswers = [...answers];
@@ -46,47 +74,83 @@ const Nivel = () => {
         setQnIndex(prevIndex => prevIndex + 1);
     };
 
+    const handlePrevious = () => {
+        setQnIndex(prevIndex => prevIndex - 1);
+    };
+
     const handleShowResult = () => {
-        navigate('/rezultat', { state: { answers: answers, nivel: nivel, materie: materie } });
-        console.log(answers);
-    }
+        const updatedAnswers = [...answers];
+        questions.forEach((question, index) => {
+            if (!updatedAnswers[index]) {
+                updatedAnswers[index] = { qnIndex: question.qnId, selectedOption: 0 }; // Set unanswered questions to option 4
+            }
+        });
+        navigate('/rezultat', { state: { answers: updatedAnswers, nivel: nivel, materie: materie } });
+        console.log(updatedAnswers);
+    };
+
+    const handleQuestionClick = (index) => {
+        setQnIndex(index);
+    };
 
     return (
+        <>
+        <div className='question-tracker'>
+            {questions.map((question, index) => (
+                <div
+                    key={index}
+                    className={`question-number ${answers[index] ? 'answered' : ''} ${index === qnIndex ? 'current' : ''}`}
+                    onClick={() => handleQuestionClick(index)}
+                >
+                    {index + 1}
+                </div>
+            ))}
+            <div className='timer'>
+                Timp ramas: {formatTime(timeLeft)}
+            </div>
+        </div>
         <div className='wrraper'>
             <div>
-                <h2 className='h2_nivel'>{`Question ${qnIndex + 1}`}</h2>
+                <h2 className='h2_nivel'>{`Question ${qnIndex + 1} of ${questions.length}`}</h2>
             </div>
-
             <ul>
                 {questions.map((question, index) => (
                     index === qnIndex && // Afișează doar întrebarea curentă
                     <li key={index}>
-                        <div className='question_asked'>{question.questionAsked}</div>
-                        <ul>
+                        <div className='question_asked'><p className='p_nivel'>{question.questionAsked}</p></div>
+                        <ul className='options-list'>
                             {question.options.map((option, optionIndex) => (
                                 <li className='li_q' key={optionIndex} style={{ listStyleType: 'none' }}>
-                                    {/* La selectarea unui răspuns, apelează funcția handleAnswer cu indexul opțiunii */}
-                                    <button className='btn_quest' onClick={() => handleAnswer(optionIndex, question.qnId)}>
+                                    <button
+                                        className={`btn_quest1 ${answers[qnIndex]?.selectedOption === optionIndex + 1 ? 'selected' : ''}`}
+                                        onClick={() => handleAnswer(optionIndex, question.qnId)}
+                                    >
                                         <div className='li_q'>{option}</div>
                                     </button>
                                 </li>
                             ))}
                         </ul>
-
                     </li>
                 ))}
             </ul>
 
+            {qnIndex > 0 && ( // Afișează butonul Previous doar dacă nu suntem la prima întrebare
+                <div className='previous-button-container'>
+                    <button className='btn_quest' onClick={handlePrevious}>Previous</button>
+                </div>
+            )}
+
             <div className='result-button-container'>
-                {qnIndex < questions.length - 1 && ( // Afisează butonul Next doar dacă mai există întrebări
+                {qnIndex < questions.length - 1 && ( // Afișează butonul Next doar dacă mai există întrebări
                     <button className='btn_quest' onClick={handleNext}>Next</button>
                 )}
 
-                {qnIndex === questions.length - 1 && ( //daca s-a ajuns la ultima intrebare
+                {qnIndex === questions.length - 1 && ( // Dacă s-a ajuns la ultima întrebare
                     <button className='btn_quest' onClick={handleShowResult}>Vezi Rezultat</button>
                 )}
             </div>
         </div>
+        </>
     );
 };
 
