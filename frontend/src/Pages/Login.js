@@ -28,6 +28,14 @@ const Login = () => {
             //if backend worked
 
             if (response.ok) {
+                const data = await response.json();
+
+                console.log(data);
+                const { userId } = data;
+
+                // Store user ID in local storage
+                localStorage.setItem('userId', userId);
+
                 setRedirect(true);
             } else {
                 // Dacă autentificarea a eșuat, afișează mesajul de eroare

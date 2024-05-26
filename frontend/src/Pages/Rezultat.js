@@ -58,6 +58,39 @@ const Rezultat = () => {
         }
     }, [correctAnswers]);
 
+    useEffect(() => {
+        if (result > 0) {
+          addScore();
+        }
+      }, [result]);
+
+
+    const addScore = async () => {
+        const userId = localStorage.getItem('userId');
+        if (!userId) {
+            console.log('nu exista userid, conectati-va din nou');
+            return;
+        }
+
+        try {
+            const response = await axios({
+                method: 'PUT',
+                url: `http://localhost:5269/updateScore/${userId}`,
+                headers: { 'Content-Type': 'application/json' },
+                params: { level: nivel, course: materie },
+                data: result,
+                });
+
+            if (response.status === 200) {
+            console.log('Scor adaugat cu succes');
+            } else {
+            console.error('Failed to add score, status code:', response.status);
+            }
+        } catch (error) {
+            console.error('Eroare la adaugarea scorului:', error);
+        }
+    };
+
     const selectImage = (scorePercentage) => {
         let folder = '';
         if (scorePercentage <= 20) {
@@ -69,7 +102,7 @@ const Rezultat = () => {
         } else if (scorePercentage <= 80) {
             folder = 'v_8_9';
         } else {
-            folder = 'v_9_10';
+            folder = 'v_10';
         }
         const randomImage = Math.floor(Math.random() * 5) + 1;
         const path = `/resources/${folder}/${randomImage}.png`;

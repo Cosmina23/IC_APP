@@ -95,6 +95,7 @@ const Home = () => {
                 withCredentials: true // pentru cookies
             });
             setLoggedIn(false);
+            localStorage.removeItem('userId');
             navigate('/'); // Redirecționează către pagina de autentificare sau altă pagină dorită
         } catch (error) {
             console.error('Eroare la deconectare:', error);
