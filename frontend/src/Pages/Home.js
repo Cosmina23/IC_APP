@@ -2,14 +2,12 @@ import React, { useEffect, useState } from "react";
 import { useNavigate, useLocation, Link } from "react-router-dom";
 import axios from 'axios';
 import "../Css/Home.css";
-import { CSSTransition } from 'react-transition-group';
 
 const Home = () => {
     const [name, setName] = useState('');
     const [loggedIn, setLoggedIn] = useState(false);
     const [levels, setLevels] = useState([]);
     const [selectedLevel, setSelectedLevel] = useState(null);
-    const [menuOpen, setMenuOpen] = useState(false);
     const [hoveredLevel, setHoveredLevel] = useState(null);
     const navigate = useNavigate();
     const location = useLocation();
@@ -61,10 +59,6 @@ const Home = () => {
         }
     }, [selectedMaterie]);
 
-    const handleProfile = () => {
-        navigate('/profile');
-    }
-
     const handleLevelSelect = (level) => {
         setSelectedLevel(level);
     }
@@ -77,10 +71,6 @@ const Home = () => {
         }
     }
 
-    const toggleMenu = () => {
-        setMenuOpen(!menuOpen);
-    }
-
     const handleLevelHover = (level) => {
         setHoveredLevel(level);
     }
@@ -89,70 +79,105 @@ const Home = () => {
         setHoveredLevel(null);
     }
 
-    const handleLogout = async () => {
-        try {
-            await axios.post('http://localhost:5269/api/Logout', null, {
-                withCredentials: true // pentru cookies
-            });
-            setLoggedIn(false);
-            localStorage.removeItem('userId');
-            navigate('/'); // Redirecționează către pagina de autentificare sau altă pagină dorită
-        } catch (error) {
-            console.error('Eroare la deconectare:', error);
+    const renderLevelsWithArrows = () => {
+        const elements = [];
+        for (let i = 0; i < levels.length; i++) {
+            const level = levels[i];
+            const row = Math.floor(i / 4) + 1;
+            const column = i % 4 + 1;
+            const reverseRow = row % 2 === 0; // Reverse on every second row
+            const gridColumn = reverseRow ? 5 - column : column;
+
+            elements.push(
+                <button 
+                    key={level} 
+                    className={`level ${selectedLevel === level ? 'selected' : ''} ${hoveredLevel === level ? 'hovered' : ''}`} 
+                    onClick={() => handleLevelSelect(level)}
+                    onMouseEnter={() => handleLevelHover(level)}
+                    onMouseLeave={handleLevelLeave}
+                    style={{
+                        gridColumn: gridColumn,
+                        gridRow: row
+                    }}
+                >
+                    Nivel {level}
+                </button>
+            );
+
+            // Add arrows
+            if (i < levels.length - 1) {
+                const nextRow = Math.floor((i + 1) / 4) + 1;
+                const nextColumn = (i + 1) % 4 + 1;
+                const nextReverseRow = nextRow % 2 === 0;
+                const nextGridColumn = nextReverseRow ? 5 - nextColumn : nextColumn;
+
+                if (nextGridColumn > gridColumn) {
+                    elements.push(
+                        <div
+                            key={`arrow-${level}`}
+                            className="arrow right"
+                            style={{
+                                gridColumn: gridColumn + 1,
+                                gridRow: row
+                            }}
+                        >
+                            ━━⟶━━-   
+                        </div>
+                    );
+                } else if (nextGridColumn < gridColumn) {
+                    elements.push(
+                        <div
+                            key={`arrow-${level}`}
+                            className="arrow left"
+                            style={{
+                                gridColumn: gridColumn - 1,
+                                gridRow: row
+                            }}
+                        >
+                            ⟵━━   
+                        </div>
+                    );
+                } else if (nextGridColumn === gridColumn && nextRow > row) {
+                    elements.push(
+                        <div
+                            key={`arrow-${level}`}
+                            className="arrow down"
+                            style={{
+                                gridColumn: gridColumn,
+                                gridRow: row + 1
+                            }}
+                        >
+                            ↓
+                        </div>
+                    );
+                }
+            }
         }
-    };
+        return elements;
+    }
 
     return (
-        <CSSTransition
-            in={loggedIn}
-            timeout={300}
-            classNames="fade"
-            unmountOnExit
-        >
-            <div className="container_home">
-                {loggedIn ? (
-                    <>
-                        <div className="navbar_h">
-                            <h1>{selectedMaterie}</h1>
-                            <button className="menu-buttonH" onClick={toggleMenu}>Meniu</button>
-                            {menuOpen && (
-                                <div className="dropdown-menuH">
-                                    <button className="buttonH" type='button' onClick={handleProfile}>Profil({name})</button>
-                                    <button className="buttonH" type='button' onClick={() => navigate('/homeMaterie')}>Link spre Materii</button>
-                                    <button className="buttonH" type='button' onClick={handleLogout}>Deconectare</button>
-                                </div>
-                            )}
-                        </div>
-                        <div className="main-contentH">
-                            <div className="levels-wrapper">
-                                <div className="levels-container">
-                                    {levels.length > 0 ? (
-                                        levels.map(level => (
-                                           <button 
-                                            key={level} 
-                                            className={`level ${selectedLevel === level ? 'selected' : ''} ${hoveredLevel === level ? 'hovered' : ''}`} 
-                                            onClick={() => handleLevelSelect(level)}
-                                            onMouseEnter={() => handleLevelHover(level)}
-                                            onMouseLeave={handleLevelLeave}>
-                                            Nivel {level}
-                                        </button>
-                                        ))
-                                    ) : (
-                                        <p>Nu există nivele disponibile</p>
-                                    )}
-                                </div>
+        <div className="container_home">
+            {loggedIn ? (
+                <>
+                    <div className="main-contentH">
+                        <div className="levels-wrapper">
+                            <div className="levels-container">
+                                {levels.length > 0 ? renderLevelsWithArrows() : <p>Nu există nivele disponibile</p>}
+                            </div>
+                            <div className="button-container">
                                 <button className="play-button" type='button' onClick={handlePlay}>Joacă</button>
-                                <Link to={'/addQuestions'}>ADAUGA</Link>
+                                <Link to={'/addQuestions'} className="add-button">ADAUGA</Link>
                             </div>
                         </div>
-                    </>
-                ) : (
-                    <div className="not-logged-in">
-                        <p>Nu sunteți conectat!</p>
                     </div>
-                )}
-            </div>
-        </CSSTransition>
+                </>
+            ) : (
+                <div className="not-logged-in">
+                    <p>Nu sunteți conectat!</p>
+                </div>
+            )}
+        </div>
     );
 };
 

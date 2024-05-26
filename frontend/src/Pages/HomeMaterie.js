@@ -35,7 +35,7 @@ const HomeMaterie = () => {
     }, []);
 
     const handleMaterieSelected = (selectedMaterie) => {
-        navigate('/home', { state: { selectedMaterie } });
+        navigate('/materie', { state: { selectedMaterie } });
     }
 
     const handleProfile = () => {

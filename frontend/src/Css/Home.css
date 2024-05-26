@@ -1,13 +1,160 @@
-/* Home.css */
+
 .container_home {
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
-    align-items: center; /* Centrează orizontal conținutul */
-    background-color: rgb(180, 172, 188); /* Purple */
-    background-image: url('../resources/school2.jpg');
-    background-repeat: repeat;
-    background-size: auto; /* Asigură-te că imaginea nu este scalată și se repetă */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center content horizontally */
+  overflow-y: auto; /* Allow vertical scrolling */
+  overflow-x: hidden; /* Prevent horizontal scrolling */
+  width: 100%; /* Ensure the container takes the full width */
+}
+
+.navbar_h {
+  background-color: #000000;
+  color: white;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%; /* Adjust width to 100% */
+}
+
+.main-contentH {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 900px; /* Maximum width of the content */
+  flex: 1;
+}
+
+.levels-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgba(176, 141, 186, 0.9); /* Transparent white background */
+  padding: 2rem;
+  border-radius: 10px;
+  width: 100%;
+  margin-top: 20px; /* Add space between the navbar and levels-wrapper */
+}
+
+.levels-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem; /* Adjust the space between the buttons horizontally and vertically */
+  position: relative;
+  width: 100%; /* Ensure container takes the full width */
+}
+
+.level {
+  color: white;
+  border: none;
+  padding: 1rem;
+  font-size: 1rem;
+  cursor: pointer;
+  width: 100px;
+  text-align: center;
+  border-radius: 12px;
+  position: relative;
+  z-index: 0;
+  background-color: #000;
+  margin: 1rem; /* Adjust the space around each button */
+}
+
+.level::after {
+  content: "";
+  z-index: -1;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: #000000;
+  left: 0;
+  top: 0;
+  border-radius: 10px;
+}
+
+.level::before {
+  content: "";
+  background: linear-gradient(
+    45deg,
+    #FF0000, #FF7300, #FFFB00, #48FF00,
+    #00FFD5, #002BFF, #FF00C8, #FF0000
+  );
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  background-size: 600%;
+  z-index: -1;
+  width: calc(100% + 4px);
+  height: calc(100% + 4px);
+  filter: blur(8px);
+  animation: glowing 20s linear infinite;
+  transition: opacity .3s ease-in-out;
+  border-radius: 10px;
+  opacity: 0;
+}
+
+.level:hover::before {
+  opacity: 1;
+}
+
+.level:active:after {
+  background: transparent;
+}
+
+.level:active {
+  color: #000;
+  font-weight: bold;
+}
+
+.level.selected {
+  border-radius: 15px;
+  border: 5px solid rgb(16, 22, 209);
+}
+
+.arrow {
+  font-size: 2rem;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none; /* Ensure arrows don't capture mouse events */
+}
+
+.arrow.right {
+  transform: translateX(-50%);
+}
+
+.arrow.left {
+  transform: translateX(50%);
+}
+
+.arrow.down {
+  transform: translateY(-50%);
+}
+
+.play-button {
+  padding: 10px 60px;
+  background-color: #000000;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 20px; /* Ensure it is spaced below the levels */
+}
+
+.play-button:hover {
+  background-color: rgb(16, 22, 209);
+}
+
+.not-logged-in {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  background-color: rgb(180, 172, 188);
+  color: white;
+  font-size: 1.5rem;
 }
 
 .fade-enter {
@@ -28,178 +175,4 @@
 .fade-exit-active {
   opacity: 0;
   transition: opacity 300ms;
-}
-
-
-.navbar_h {
-    background-color: #000000;
-    color: white;
-    padding: 10px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 98.7%;
-}
-
-
-.menu-buttonH {
-    background: none;
-    border: none;
-    color: white;
-    cursor: pointer;
-    font-size: 1rem;
-}
-
-.dropdown-menuH {
-    position: absolute;
-    top: 3.5rem;
-    right: 1rem;
-    background-color: black;
-    padding: 1.5rem;
-    width: 200px;
-    border: 1px solid white;
-    display: flex;
-    flex-direction: column;
-}
-
-.buttonH {
-    padding: 15px;
-    background: none;
-    border: none;
-    color: white;
-    padding: 0.5rem 0;
-    cursor: pointer;
-    text-align: left;
-}
-
-.buttonH:hover{
-    letter-spacing: 0.25em;
-    border-radius: 15px;
-    background-color: rgb(180, 172, 188);
-}
-
-.main-contentH {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    max-width: 600px; /* Lățimea maximă a conținutului principal */
-}
-
-.levels-wrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: rgba(176, 141, 186, 0.9); /* Transparent white background */
-    padding: 2rem;
-    border-radius: 10px;
-    width: 140%;
-    margin-top: 20px; /* Adaugă spațiu între bara de navigare și levels-wrapper */
-}
-
-
-.levels-container {
-    display: grid; /* Schimbă display-ul în grid */
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2rem; /* Ajustează spațiul între butoane */
-    margin-bottom: 1rem;
-}
-
-
-.level {
-    border: none;
-    padding: 1rem;
-    font-size: 1rem;
-    cursor: pointer;
-    width: 200px;
-    text-align: center;
-}
-.level {
-    border: none;
-    outline: none;
-    color: #FFF;
-    cursor: pointer;
-    position: relative;
-    z-index: 0;
-    border-radius: 12px;
-  }
-  .level::after {
-    content: "";
-    z-index: -1;
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background-color: #000000;
-    left: 0;
-    top: 0;
-    border-radius: 10px;
-  }
-  /* glow */
-  .level::before {
-    content: "";
-    background: linear-gradient(
-      45deg,
-      #FF0000, #FF7300, #FFFB00, #48FF00,
-      #00FFD5, #002BFF, #FF00C8, #FF0000
-    );
-    position: absolute;
-    top: -2px;
-    left: -2px;
-    background-size: 600%;
-    z-index: -1;
-    width: calc(100% + 4px);
-    height:  calc(100% + 4px);
-    filter: blur(8px);
-    animation: glowing 20s linear infinite;
-    transition: opacity .3s ease-in-out;
-    border-radius: 10px;
-    opacity: 0;
-  }
-  
-  @keyframes glowing {
-    0% {background-position: 0 0;}
-    50% {background-position: 400% 0;}
-    100% {background-position: 0 0;}
-  }
-  
-  /* hover */
-  .level:hover::before {
-    opacity: 1;
-  }
-  
-  .level:active:after {
-    background: transparent;
-  }
-  
-  .level:active {
-    color: #000;
-    font-weight: bold;
-  }
-.play-button {
-    padding: 10px 60px;
-    background-color: #000000;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-top: 20px; /* Ensure it is spaced below the levels */
-}
-
-.play-button:hover{
-    background-color: rgb(16, 22, 209);
-}
-
-.level.selected {
-    border-radius: 15px;
-    border: 5px solid rgb(16, 22, 209); /* Adaugă o margine verde când butonul este selectat */
-}
-
-.not-logged-in {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-    background-color: rgb(180, 172, 188); /* Purple */
-    color: white;
-    font-size: 1.5rem;
 }
