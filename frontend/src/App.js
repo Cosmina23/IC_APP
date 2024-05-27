@@ -15,6 +15,7 @@ import Rezultat from './Pages/Rezultat';
 import Materie from './Pages/Materie'
 import HomeMaterie from './Pages/HomeMaterie';
 import AddQuestions from './Pages/AddQuestions';
+import Challenge from './Pages/Challenge';
 
   
   const router = createBrowserRouter([
@@ -57,6 +58,10 @@ import AddQuestions from './Pages/AddQuestions';
     {
       path: '/addQuestions',
       element: <AddQuestions/>
+    },
+    {
+      path: '/challenge',
+      element: <Challenge/>
     }
   ]);
 
