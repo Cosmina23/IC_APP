@@ -12,8 +12,8 @@ using backend.Models;
 namespace backend.Migrations
 {
     [DbContext(typeof(easyBacDbContext))]
-    [Migration("20240527072544_addchallenge")]
-    partial class addchallenge
+    [Migration("20240527080148_challengetable")]
+    partial class challengetable
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -99,45 +99,6 @@ namespace backend.Migrations
                     b.HasKey("ChallengeId");
 
                     b.ToTable("Challenges");
-                });
-
-            modelBuilder.Entity("backend.Models.DailyChallenge", b =>
-                {
-                    b.Property<int>("ChallengeId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ChallengeId"));
-
-                    b.Property<int>("Answer")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Course")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(100)");
-
-                    b.Property<DateTime>("Date")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Option1")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(250)");
-
-                    b.Property<string>("Option2")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(250)");
-
-                    b.Property<string>("Option3")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(250)");
-
-                    b.Property<string>("Question")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(250)");
-
-                    b.HasKey("ChallengeId");
-
-                    b.ToTable("DailyChallenges");
                 });
 
             modelBuilder.Entity("backend.Models.HistoryScore", b =>

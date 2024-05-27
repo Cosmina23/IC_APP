@@ -12,6 +12,7 @@ namespace backend.Models
         public DbSet<BiologyScore> BiologyScores { get; set; } = default!;
         public DbSet<RomanaScore> RomanaScores { get; set; } = default!;
         public DbSet<HistoryScore> HistoryScores { get; set; } = default!;
+        public DbSet<Challenge> Challenges { get; set; } = default!;
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
