@@ -69,6 +69,11 @@ const Materie = () => {
         navigate('/profile');
     };
 
+    
+    const handleComment = () => {
+        navigate('/commentsPage');
+    }
+
     const handleMenuClick = (path) => {
         setMenuOpen(false);
         navigate(path);
@@ -121,6 +126,7 @@ const Materie = () => {
                             {menuOpen && (
                                 <div className="dropdown-menuH">
                                     <button className="buttonH" type='button' onClick={handleProfile}>Profil({name})</button>
+                                    <button className='buttonH' type='button' onClick={handleComment}>Comentarii</button>
                                     <button className="buttonH" type='button' onClick={() => navigate('/homeMaterie')}>Link spre Materii</button>
                                     <button className="buttonH" type='button' onClick={handleLogout}>Deconectare</button>
                                 </div>

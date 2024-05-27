@@ -35,6 +35,7 @@ const Login = () => {
 
                 // Store user ID in local storage
                 localStorage.setItem('userId', userId);
+                localStorage.setItem('userEmail', email);
 
                 setRedirect(true);
             } else {

@@ -16,6 +16,7 @@ import Materie from './Pages/Materie'
 import HomeMaterie from './Pages/HomeMaterie';
 import AddQuestions from './Pages/AddQuestions';
 import Challenge from './Pages/Challenge';
+import CommentsPage from './Pages/CommentsPage';
 
   
   const router = createBrowserRouter([
@@ -62,6 +63,10 @@ import Challenge from './Pages/Challenge';
     {
       path: '/challenge',
       element: <Challenge/>
+    },
+    {
+      path: '/commentsPage',
+      element: <CommentsPage/>
     }
   ]);
 

@@ -1,0 +1,75 @@
+.comments-list {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    border-radius: 25%;
+}
+
+.comment-item {
+    margin-bottom: 20px;
+    padding: 10px;
+    background-color: violet;
+    border-radius: 25%;
+    width: 350px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.comment-left {
+    margin-right: 150px; /* Adds spacing from the right edge */
+}
+
+.comment-right {
+    margin-left: 150px; /* Adds spacing from the left edge */
+}
+
+.comment-header {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.comment-email {
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.comment-content {
+    word-break: break-word; 
+    flex: 1;
+}
+
+.comment-footer {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    font-size: 0.8em;
+    margin-top: 10px;
+}
+
+.comment-buttons {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.button-comlist {
+    margin-left: 5px;
+    border-radius: 5px;
+    border: none;
+    background-color: #6a9fd8;
+    color: white;
+    cursor: pointer;
+    font-size: 14px;
+    padding: 5px 10px;
+}
+
+.button-comlist:hover {
+    background-color: #5a8ecf;
+}
