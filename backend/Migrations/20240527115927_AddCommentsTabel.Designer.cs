@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using backend.Models;
 
@@ -11,9 +12,11 @@ using backend.Models;
 namespace backend.Migrations
 {
     [DbContext(typeof(easyBacDbContext))]
-    partial class easyBacDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240527115927_AddCommentsTabel")]
+    partial class AddCommentsTabel
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -59,45 +62,6 @@ namespace backend.Migrations
                     b.ToTable("BiologyScores");
                 });
 
-<<<<<<< HEAD
-            modelBuilder.Entity("backend.Models.Challenge", b =>
-                {
-                    b.Property<int>("ChallengeId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ChallengeId"));
-
-                    b.Property<int>("Answer")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Course")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(100)");
-
-                    b.Property<DateTime>("Date")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Option1")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(250)");
-
-                    b.Property<string>("Option2")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(250)");
-
-                    b.Property<string>("Option3")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(250)");
-
-                    b.Property<string>("Question")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(250)");
-
-                    b.HasKey("ChallengeId");
-
-                    b.ToTable("Challenges");
-=======
             modelBuilder.Entity("backend.Models.Comment", b =>
                 {
                     b.Property<int>("CommentID")
@@ -125,7 +89,6 @@ namespace backend.Migrations
                     b.HasIndex("ParentCommentID");
 
                     b.ToTable("Comments");
->>>>>>> 19ec1e582ed50e06dff71558c036d8584475c16d
                 });
 
             modelBuilder.Entity("backend.Models.HistoryScore", b =>

@@ -1,0 +1,86 @@
+.comments-page {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    position: relative;
+}
+
+.comments-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    overflow-y: auto;
+    margin-top: 50px; /* Adjust this value to provide space for the fixed navbar */
+    margin-bottom: 80px; /* Adjust this value to provide space for the fixed comment form */
+}
+
+.comments-container h1 {
+    margin-bottom: 20px;
+}
+
+.comments-container ul {
+    list-style-type: none;
+    padding: 0;
+    width: 100%;
+    max-width: 600px;
+}
+
+.comments-container li {
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+.comment-form-container {
+    height: 150px; /* Increased to accommodate the reply message */
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: rgb(180, 172, 188);
+    border-top: 1px solid #ddd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.comment-form {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.comment-form .form-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.comment-form .p_raspuns {
+    position: absolute;
+    top: -20px; /* Adjust this value to position the reply message */
+    left: 0;
+    font-size: 0.9em;
+    color: #555;
+}
+
+.comment-form textarea {
+    height: 70px;
+    width: 600px; /* Fixed width */
+    margin-right: 20px;
+    border-radius: 5px;
+    border: 1px solid #cc9de0;
+}
+
+.comment-form button {
+    border-radius: 5px;
+    border: none;
+    background-color: #6a9fd8;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+    height: 40px; /* Fixed height for consistency */
+}

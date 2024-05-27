@@ -42,6 +42,10 @@ const HomeMaterie = () => {
         navigate('/profile');
     }
 
+    const handleComment = () => {
+        navigate('/commentsPage');
+    }
+
     const toggleMenu = () => {
         setMenuOpen(!menuOpen);
     }
@@ -69,11 +73,13 @@ const HomeMaterie = () => {
                 {loggedIn ? (
                     <>
                         <div className="navbar_h">
+                            
                             <p></p>
                             <button className="menu-buttonH" onClick={toggleMenu}>Meniu</button>
                             {menuOpen && (
                                 <div className="dropdown-menuH">
                                     <button className="buttonH" type='button' onClick={handleProfile}>Profil({name})</button>
+                                    <button className='buttonH' type='button' onClick={handleComment}>Comentarii</button>
                                     <button className="buttonH" type='button' onClick={handleLogout}>Deconectare</button>
                                 </div>
                             )}

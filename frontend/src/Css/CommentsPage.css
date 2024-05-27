@@ -1,0 +1,115 @@
+.comments-page {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    position: relative;
+}
+
+.comments-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    overflow-y: auto;
+    margin-top: 50px; /* Adjust this value to provide space for the fixed navbar */
+    margin-bottom: 80px; /* Adjust this value to provide space for the fixed comment form */
+}
+
+.comments-container h1 {
+    margin-bottom: 20px;
+}
+
+.comments-container ul {
+    list-style-type: none;
+    padding: 0;
+    width: 100%;
+    max-width: 600px;
+}
+
+.comments-container li {
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+.navbar_h_com {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    background-color: #000000;
+    color: white;
+    padding: 10px;
+    width: 50px;
+    height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    z-index: 1000;
+    border-radius: 20px;
+}
+
+.dropdown-menuH_com {
+    position: absolute;
+    top: 80px;
+    left: 10px;
+    background-color: black;
+    padding: 1.5rem;
+    width: 200px;
+    border: 1px solid white;
+    display: flex;
+    flex-direction: column;
+}
+
+.comment-form-container {
+    height: 100px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #f0e8ee;
+    border-top: 1px solid #ddd;
+}
+
+.comment-form-container form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.comment-form-container .form-row {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: center;
+}
+
+.comment-form-container .p_raspuns {
+    flex: 1;
+    align-self: flex-start;
+    font-size: 0.9em;
+    color: #555;
+    margin-left: 20px;
+}
+
+.comment-form-container textarea {
+    flex: 2;
+    max-width: 600px;
+    margin-right: 20px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}
+
+.comment-form-container button {
+    flex: 0;
+    margin-right: 0%;
+    border-radius: 5px;
+    border: none;
+    background-color: #6a9fd8;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+}

@@ -12,7 +12,11 @@ namespace backend.Models
         public DbSet<BiologyScore> BiologyScores { get; set; } = default!;
         public DbSet<RomanaScore> RomanaScores { get; set; } = default!;
         public DbSet<HistoryScore> HistoryScores { get; set; } = default!;
+<<<<<<< HEAD
         public DbSet<Challenge> Challenges { get; set; } = default!;
+=======
+        public DbSet<Comment> Comments { get; set; } = default!;
+>>>>>>> 19ec1e582ed50e06dff71558c036d8584475c16d
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -46,6 +50,14 @@ namespace backend.Models
                       .WithOne(u => u.ScoreHistory)
                       .HasForeignKey<HistoryScore>(b => b.UserId)
                       .IsRequired();
+            });
+
+            modelBuilder.Entity<Comment>(entity =>
+            {
+                entity.HasKey(c => c.CommentID);
+                entity.HasOne(c => c.ParentComment)
+                      .WithMany(c => c.Replies)
+                      .HasForeignKey(c => c.ParentCommentID);
             });
         }
     }
