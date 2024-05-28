@@ -8,6 +8,7 @@
         public string Option2 { get; set; } = string.Empty;
         public string Option3 { get; set; } = string.Empty;
         public int Answer { get; set; }
+        public int Valoare { get; set; }
 
         public DateTime Date { get; set; } = DateTime.Today;
     }

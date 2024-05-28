@@ -24,6 +24,7 @@ namespace backend.Models
         public string Option3 { get; set; } = string.Empty;
 
         public int Answer { get; set; }
+        public int Valoare { get; set; }
 
         public DateTime Date { get; set; } = DateTime.Today; // current date with the time compnents set to zero
     }

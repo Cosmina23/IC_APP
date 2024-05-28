@@ -17,6 +17,8 @@ namespace backend.Models
         public int Level5Score { get; set; } = 0;
         public int TotalScore { get; set; } = 0;
 
+        public int NivelCurent { get; set; } = 1;
+
         [ForeignKey("UserId")]
         public User User { get; set; } = null!;
     }

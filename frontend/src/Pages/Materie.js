@@ -14,6 +14,8 @@ const Materie = () => {
     const [transitionClass, setTransitionClass] = useState('');
     const [loggedIn, setLoggedIn] = useState(false);
     const [menuOpen, setMenuOpen] = useState(false);
+    const [nivelCurent, setNivelCurent] = useState('');
+    const userId = localStorage.getItem('userId');
 
     useEffect(() => {
         const fetchUserData = async () => {
@@ -36,7 +38,24 @@ const Materie = () => {
         };
 
         fetchUserData();
+        getNivelCurent();
     }, []);
+
+    const getNivelCurent = async () => {
+
+        try {
+            const response = await axios.get(`http://localhost:5269/getNivelCurent/${userId}`, {
+                params: { course: selectedMaterie },
+                headers: { 'Content-Type': 'application/json' },
+                withCredentials: true // pentru cookies
+            });
+            if (response.status === 200) {
+                setNivelCurent(response.data.currentLevel);
+            }
+        } catch (error) {
+            console.log('Eroare preluare nivel curent');
+        }
+    };
 
     const handleSwitch = (page) => {
         if (page !== activePage) {
@@ -49,7 +68,7 @@ const Materie = () => {
     };
 
     const handleChallengeClick = () => {
-        navigate('/challenge'); 
+        navigate('/challenge', {state: {selectedMaterie}}); 
     };
 
     const handleLogout = async () => {
@@ -139,6 +158,7 @@ const Materie = () => {
                     <p>Niciun buton nu a fost apăsat.</p>
                 )}
             </div>
+            <div>Nivel curent: {nivelCurent}</div>
         </div>
     );
 }

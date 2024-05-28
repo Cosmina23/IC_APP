@@ -12,8 +12,8 @@ using backend.Models;
 namespace backend.Migrations
 {
     [DbContext(typeof(easyBacDbContext))]
-    [Migration("20240527115927_AddCommentsTabel")]
-    partial class AddCommentsTabel
+    [Migration("20240528083513_AddChallengeColumn")]
+    partial class AddChallengeColumn
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -60,6 +60,48 @@ namespace backend.Migrations
                         .IsUnique();
 
                     b.ToTable("BiologyScores");
+                });
+
+            modelBuilder.Entity("backend.Models.Challenge", b =>
+                {
+                    b.Property<int>("ChallengeId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ChallengeId"));
+
+                    b.Property<int>("Answer")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Course")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Option1")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(250)");
+
+                    b.Property<string>("Option2")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(250)");
+
+                    b.Property<string>("Option3")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(250)");
+
+                    b.Property<string>("Question")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(250)");
+
+                    b.Property<int>("Valoare")
+                        .HasColumnType("int");
+
+                    b.HasKey("ChallengeId");
+
+                    b.ToTable("Challenges");
                 });
 
             modelBuilder.Entity("backend.Models.Comment", b =>

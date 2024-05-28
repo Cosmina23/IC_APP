@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using backend.Models;
 
@@ -11,9 +12,11 @@ using backend.Models;
 namespace backend.Migrations
 {
     [DbContext(typeof(easyBacDbContext))]
-    partial class easyBacDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240528063027_CommentsTable")]
+    partial class CommentsTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -43,9 +46,6 @@ namespace backend.Migrations
                         .HasColumnType("int");
 
                     b.Property<int>("Level5Score")
-                        .HasColumnType("int");
-
-                    b.Property<int>("NivelCurent")
                         .HasColumnType("int");
 
                     b.Property<int>("TotalScore")
@@ -95,9 +95,6 @@ namespace backend.Migrations
                     b.Property<string>("Question")
                         .IsRequired()
                         .HasColumnType("nvarchar(250)");
-
-                    b.Property<int>("Valoare")
-                        .HasColumnType("int");
 
                     b.HasKey("ChallengeId");
 
@@ -154,9 +151,6 @@ namespace backend.Migrations
                         .HasColumnType("int");
 
                     b.Property<int>("Level5Score")
-                        .HasColumnType("int");
-
-                    b.Property<int>("NivelCurent")
                         .HasColumnType("int");
 
                     b.Property<int>("TotalScore")
@@ -233,9 +227,6 @@ namespace backend.Migrations
                         .HasColumnType("int");
 
                     b.Property<int>("Level5Score")
-                        .HasColumnType("int");
-
-                    b.Property<int>("NivelCurent")
                         .HasColumnType("int");
 
                     b.Property<int>("TotalScore")

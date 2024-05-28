@@ -17,6 +17,7 @@ import HomeMaterie from './Pages/HomeMaterie';
 import AddQuestions from './Pages/AddQuestions';
 import Challenge from './Pages/Challenge';
 import CommentsPage from './Pages/CommentsPage';
+import AddChallenge from './Pages/AddChallenge';
 
   
   const router = createBrowserRouter([
@@ -67,9 +68,13 @@ import CommentsPage from './Pages/CommentsPage';
     {
       path: '/commentsPage',
       element: <CommentsPage/>
-    }
+    },
+    {
+      path: '/addChallenge',
+      element: <AddChallenge/>
+    },
   ]);
-
+ 
 export default function App(){
     return (
         <RouterProvider router={router} />

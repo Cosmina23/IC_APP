@@ -34,7 +34,7 @@ namespace backend.Controllers
         }
 
         [HttpPost("addChallenge")]
-        public async Task<IActionResult> AddChallenge([FromQuery] ChallengeDto challengeDto)
+        public async Task<IActionResult> AddChallenge([FromBody] ChallengeDto challengeDto)
         {
             if (!ModelState.IsValid)
             {
@@ -49,7 +49,8 @@ namespace backend.Controllers
                 Option2 = challengeDto.Option2,
                 Option3 = challengeDto.Option3,
                 Answer = challengeDto.Answer,
-                Date = challengeDto.Date
+                Date = challengeDto.Date,
+                Valoare = challengeDto.Valoare
             };
 
             _context.Challenges.Add(challenge);
