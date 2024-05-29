@@ -1,0 +1,84 @@
+body {
+    height: 100vh;
+    margin: 0;
+}
+  
+.wrraper2 {
+    width: 80%;
+    margin: 150px auto; /* Center the wrapper horizontally */
+    background-color: rgba(151, 125, 186, 0.87);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.8); /* Add a subtle shadow */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Align items to the start (left) */
+    position: relative; /* For absolute positioning of question tracker */
+}
+
+.question {
+    font-size: 1.5em;
+    width: 100%;
+    padding: 10px;
+    background-color: #d1c4e9;
+    border: 2px solid #8b6106;
+    border-radius: 30px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.h1-challenge{
+    text-align: center;
+}
+
+.options-list {
+    list-style-type: none; /* Elimină marcajele listei */
+    padding: 0;
+    text-align: center; /* Centrează opțiunile */
+}
+
+.option {
+    display: inline-block;
+    width: 50%; /* Ajustează după preferință */
+    padding: 10px;
+    margin: 10px 0;
+    font-size: 1.2em;
+    cursor: pointer;
+    background-color: #c093d1; /* Fundal mov deschis */
+    border: 2px solid #9575cd; /* Bordură mov */
+    border-radius: 8px; /* Colțuri rotunjite */
+    transition: background-color 0.3s ease; /* Tranziție lină */
+}
+
+.option:hover {
+    background-color: #9b00a9; /* Fundal mov mediu */
+}
+
+.option.selected {
+    background-color: #9b00a9; /* Fundal mov închis pentru opțiunea selectată */
+    border-color: #673ab7; /* Bordură mov închis */
+    color: #fff; /* Text alb */
+}
+
+.btn_challenge {
+    background-color: rgba(151, 125, 186, 0.87);
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+    width: 100px; /* Make buttons narrower */
+    margin: 5px 0;
+    text-align: left; /* Align text to the left */
+}
+
+.h2_challenge {
+    color: #e3dbe0;
+    text-align: left;
+    font-weight: bold;
+    margin-bottom: 20px;
+    font-size: 20px;
+    margin-left: 0;
+  }

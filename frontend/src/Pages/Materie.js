@@ -4,6 +4,8 @@ import Home from './Home';
 import Clasament from './Clasament';
 import '../Css/Materie.css';
 import axios from 'axios';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Materie = () => {
     const [name, setName] = useState('');
@@ -16,6 +18,7 @@ const Materie = () => {
     const [menuOpen, setMenuOpen] = useState(false);
     const [nivelCurent, setNivelCurent] = useState('');
     const userId = localStorage.getItem('userId');
+    const [hasAttempted, setHasAttempted] = useState(true);
 
     useEffect(() => {
         const fetchUserData = async () => {
@@ -39,6 +42,7 @@ const Materie = () => {
 
         fetchUserData();
         getNivelCurent();
+        getPermissionChallenge();
     }, []);
 
     const getNivelCurent = async () => {
@@ -67,8 +71,29 @@ const Materie = () => {
         }
     };
 
+    const getPermissionChallenge = async () => {
+        try {
+            const response = await axios({
+                method: 'GET',
+                url: `http://localhost:5269/hasAttempted/${userId}`,
+                headers: { 'Content-Type': 'application/json' },
+                params: { course: selectedMaterie },
+            });
+            setHasAttempted(response.data.hasAttempted);
+            
+        } catch (error) {
+            console.error('Error fetching questions:', error);
+        }
+    }
+
     const handleChallengeClick = () => {
-        navigate('/challenge', {state: {selectedMaterie}}); 
+        console.log('has attempted: ')
+        console.log(hasAttempted)
+        if (!hasAttempted) {
+            navigate('/challenge', { state: { selectedMaterie } });
+        } else {
+            toast.error('Ai completat deja challenge-ul de azi!');
+        }
     };
 
     const handleLogout = async () => {
@@ -159,6 +184,7 @@ const Materie = () => {
                 )}
             </div>
             <div>Nivel curent: {nivelCurent}</div>
+            <ToastContainer />
         </div>
     );
 }

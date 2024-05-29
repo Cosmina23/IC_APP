@@ -14,6 +14,7 @@ namespace backend.Models
         public DbSet<HistoryScore> HistoryScores { get; set; } = default!;
         public DbSet<Challenge> Challenges { get; set; } = default!;
         public DbSet<Comment> Comments { get; set; } = default!;
+        public DbSet<DailyAttempt> DailyAttempts { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

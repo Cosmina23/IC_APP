@@ -53,6 +53,7 @@ namespace backend.Controllers
                     Level4Score = 0,
                     Level5Score = 0,
                     TotalScore = 0,
+                    LatestChallengeScore = 0,
                     NivelCurent = 1
                 };
 
@@ -62,6 +63,9 @@ namespace backend.Controllers
 
             switch (level)
             {
+                case 0:
+                    historyScore.LatestChallengeScore += newScore;
+                    break;
                 case 1:
                     historyScore.Level1Score = newScore;
                     break;
@@ -82,7 +86,8 @@ namespace backend.Controllers
             }
 
             // Recalculate total score
-            historyScore.TotalScore = historyScore.Level1Score + historyScore.Level2Score + historyScore.Level3Score + historyScore.Level4Score + historyScore.Level5Score;
+            historyScore.TotalScore = historyScore.Level1Score + historyScore.Level2Score + historyScore.Level3Score + historyScore.Level4Score + historyScore.Level5Score + historyScore.LatestChallengeScore;
+
 
             //daca userul a obtinuit scor de trecere la nivelul curent, are acces la nivelul urmator
             if (historyScore.NivelCurent == level && newScore >= 3)
@@ -112,6 +117,7 @@ namespace backend.Controllers
                     Level4Score = 0,
                     Level5Score = 0,
                     TotalScore = 0,
+                    LatestChallengeScore = 0,
                     NivelCurent = 1
                 };
 
@@ -121,6 +127,9 @@ namespace backend.Controllers
 
             switch (level)
             {
+                case 0:
+                    biologyScore.LatestChallengeScore += newScore;
+                    break;
                 case 1:
                     biologyScore.Level1Score = newScore;
                     break;
@@ -141,7 +150,7 @@ namespace backend.Controllers
             }
 
             // Recalculate total score
-            biologyScore.TotalScore = biologyScore.Level1Score + biologyScore.Level2Score + biologyScore.Level3Score + biologyScore.Level4Score + biologyScore.Level5Score;
+            biologyScore.TotalScore = biologyScore.Level1Score + biologyScore.Level2Score + biologyScore.Level3Score + biologyScore.Level4Score + biologyScore.Level5Score + biologyScore.LatestChallengeScore;
 
             //daca userul a obtinuit scor de trecere la nivelul curent, are acces la nivelul urmator
             if (biologyScore.NivelCurent == level && newScore >= 3)
@@ -171,6 +180,7 @@ namespace backend.Controllers
                     Level4Score = 0,
                     Level5Score = 0,
                     TotalScore = 0,
+                    LatestChallengeScore = 0,
                     NivelCurent = 1
                 };
 
@@ -180,6 +190,9 @@ namespace backend.Controllers
 
             switch (level)
             {
+                case 0:
+                    romanaScore.LatestChallengeScore += newScore;
+                    break;
                 case 1:
                     romanaScore.Level1Score = newScore;
                     break;
@@ -200,7 +213,7 @@ namespace backend.Controllers
             }
 
             // Recalculate total score
-            romanaScore.TotalScore = romanaScore.Level1Score + romanaScore.Level2Score + romanaScore.Level3Score + romanaScore.Level4Score + romanaScore.Level5Score;
+            romanaScore.TotalScore = romanaScore.Level1Score + romanaScore.Level2Score + romanaScore.Level3Score + romanaScore.Level4Score + romanaScore.Level5Score + romanaScore.LatestChallengeScore;
 
             //daca userul a obtinuit scor de trecere la nivelul curent, are acces la nivelul urmator
             if (romanaScore.NivelCurent == level && newScore >= 3)

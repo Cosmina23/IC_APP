@@ -16,6 +16,7 @@ namespace backend.Models
         public int Level4Score { get; set; } = 0;
         public int Level5Score { get; set; } = 0;
         public int TotalScore { get; set; } = 0;
+        public int LatestChallengeScore { get; set; } = 0;
 
         public int NivelCurent { get; set; } = 1;
 
