@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import "../Css/Home.css";
+import "../Css/Home.css"; // Stilurile existente
+import "../Css/HomeMaterie.css"; // Stilurile noi
 import { CSSTransition } from 'react-transition-group';
 
 const HomeMaterie = () => {
@@ -73,7 +74,6 @@ const HomeMaterie = () => {
                 {loggedIn ? (
                     <>
                         <div className="navbar_h">
-                            
                             <p></p>
                             <button className="menu-buttonH" onClick={toggleMenu}>Meniu</button>
                             {menuOpen && (
@@ -86,10 +86,19 @@ const HomeMaterie = () => {
                         </div>
                         <div className="main-contentH">
                             <h1>Selectează Materia</h1>
-                            <div className="levels-container">
-                                <button className="level" onClick={() => handleMaterieSelected('Biologie')}>Biologie</button>
-                                <button className="level" onClick={() => handleMaterieSelected('Romana')}>Romana</button>
-                                <button className="level" onClick={() => handleMaterieSelected('Istorie')}>Istorie</button>
+                            <div className="boxes-container">
+                                <div className="box biologie" onClick={() => handleMaterieSelected('Biologie')}>
+                                    <div className="image"></div>
+                                    <div className="text">Anatomie</div>
+                                </div>
+                                <div className="box romana" onClick={() => handleMaterieSelected('Romana')}>
+                                    <div className="image"></div>
+                                    <div className="text">Romana</div>
+                                </div>
+                                <div className="box istorie" onClick={() => handleMaterieSelected('Istorie')}>
+                                    <div className="image"></div>
+                                    <div className="text">Istorie</div>
+                                </div>
                             </div>
                         </div>
                     </>

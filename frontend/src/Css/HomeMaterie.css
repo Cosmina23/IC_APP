@@ -1,0 +1,55 @@
+.boxes-container {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+    width: 130%;
+}
+
+.box {
+    width: 200px;
+    height: 300px;
+    display: flex;
+    flex-direction: column; /* Afișează elementele vertical */
+    align-items: center;
+    font-size: 1.5rem;
+    color: white;
+    cursor: pointer;
+    border-radius: 10px;
+    transition: transform 0.3s, box-shadow 0.3s;
+    margin: 0 30px; /* Adăugăm margine pe laterale pentru spatiere */
+    background-size: cover; /* Să asigurăm că imaginile de fundal acoperă întreaga box */
+    background-position: center; /* Să centrăm imaginea de fundal */
+    position: relative; /* Necesită pentru a poziționa textul absolut */
+    overflow: hidden; /* Ascunde overflow-ul */
+}
+
+.box:hover {
+    transform: translateY(-10px); /* Se ridică mai mult când este hover */
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4); /* Umbră mai evidentă când este hover */
+}
+
+.box .image {
+    width: 100%;
+    height: 80%; /* Ajustează înălțimea imaginii */
+    background-size: cover; /* Să asigurăm că imaginile de fundal acoperă întreaga box */
+    background-position: center; /* Să centrăm imaginea de fundal */
+}
+
+.box .text {
+    margin-top: 10px; /* Distanța dintre imagine și text */
+    background-color: rgba(0, 0, 0, 0.7); /* Fundal semi-transparent pentru text */
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+.biologie .image {
+    background-image: url('../resources/biologie.png'); /* Imagine de fundal pentru Biologie */
+}
+
+.romana .image {
+    background-image: url('../resources/romana.png'); /* Imagine de fundal pentru Romana */
+}
+
+.istorie .image {
+    background-image: url('../resources/istorie.png'); /* Imagine de fundal pentru Istorie */
+}
