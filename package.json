@@ -4,6 +4,7 @@
     "@emotion/styled": "^11.11.5",
     "@mui/material": "^5.15.18",
     "bootstrap": "^5.3.3",
+    "react-toastify": "^10.0.5",
     "react-transition-group": "^4.4.5"
   }
 }
