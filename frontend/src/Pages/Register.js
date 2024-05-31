@@ -11,13 +11,22 @@ const Register = () => {
     const [prenume, setPrenume] = useState('');
     const [telefon, setTelefon] = useState('');
     const [password, setPassword] = useState('');
+    const [errorMessage, setErrorMessage] = useState('');
     const navigate  = useNavigate();
 
     const [redirect, setRedirect] = useState(false);
 
-
+    const validateEmail = (email) => {
+      const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      return re.test(String(email).toLowerCase());
+  };
     const submit = async(e) => {
       e.preventDefault();//pentru a opri functia implicita de refresh a form=ului
+
+      if (!validateEmail(email)) {
+        setErrorMessage('Email invalid. Te rugăm să introduci un email valid.');
+        return;
+    }
 
       try {
         await fetch(' http://localhost:5269/api/register', {
@@ -78,6 +87,7 @@ const Register = () => {
                 <div className='creare_cont_btn'>
                   <button type='submit'>Creeaza cont</button>
                 </div>
+                {errorMessage && <p className="error-message">{errorMessage}</p>}
                 <div>
                   <p>
                     Ai deja cont? <Link to="/login">Logare</Link>
@@ -96,16 +106,3 @@ const Register = () => {
 }
 
 export default Register
-
-
-
-
-
-
-
-
-
-
-
-
-

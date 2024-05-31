@@ -9,9 +9,11 @@ const Home = () => {
     const [levels, setLevels] = useState([]);
     const [selectedLevel, setSelectedLevel] = useState(null);
     const [hoveredLevel, setHoveredLevel] = useState(null);
+    const [nivelCurent, setNivelCurent] = useState(1); // Nivelul curent al utilizatorului
     const navigate = useNavigate();
     const location = useLocation();
     const { selectedMaterie } = location.state || {}; // primește materia selectată
+    const userId = localStorage.getItem('userId'); // Obține userId din localStorage
 
     useEffect(() => {
         const fetchUserData = async () => {
@@ -34,6 +36,7 @@ const Home = () => {
         };
 
         fetchUserData();
+        fetchNivelCurent(); // Obține nivelul curent
     }, []);
 
     useEffect(() => {
@@ -59,8 +62,27 @@ const Home = () => {
         }
     }, [selectedMaterie]);
 
+    const fetchNivelCurent = async () => {
+        try {
+            const response = await axios.get(`http://localhost:5269/getNivelCurent/${userId}`, {
+                params: { course: selectedMaterie },
+                headers: { 'Content-Type': 'application/json' },
+                withCredentials: true // pentru cookies
+            });
+            if (response.status === 200) {
+                setNivelCurent(response.data.currentLevel);
+            }
+        } catch (error) {
+            console.log('Eroare preluare nivel curent');
+        }
+    };
+
     const handleLevelSelect = (level) => {
-        setSelectedLevel(level);
+        if (level <= nivelCurent) {
+            setSelectedLevel(level);
+        } else {
+            console.error('Nu puteți accesa acest nivel încă.');
+        }
     }
 
     const handlePlay = () => {
@@ -91,7 +113,7 @@ const Home = () => {
             elements.push(
                 <button 
                     key={level} 
-                    className={`level ${selectedLevel === level ? 'selected' : ''} ${hoveredLevel === level ? 'hovered' : ''}`} 
+                    className={`level ${selectedLevel === level ? 'selected' : ''} ${hoveredLevel === level ? 'hovered' : ''} ${level > nivelCurent ? 'disabled' : ''}`} 
                     onClick={() => handleLevelSelect(level)}
                     onMouseEnter={() => handleLevelHover(level)}
                     onMouseLeave={handleLevelLeave}
@@ -99,6 +121,7 @@ const Home = () => {
                         gridColumn: gridColumn,
                         gridRow: row
                     }}
+                    disabled={level > ({nivelCurent}+1)} // Disable button if level is greater than current level
                 >
                     Nivel {level}
                 </button>
@@ -121,7 +144,7 @@ const Home = () => {
                                 gridRow: row
                             }}
                         >
-                            ━━⟶━━-   
+                            ━━━━━━
                         </div>
                     );
                 } else if (nextGridColumn < gridColumn) {
@@ -134,7 +157,7 @@ const Home = () => {
                                 gridRow: row
                             }}
                         >
-                            ⟵━━   
+                        ━━━━━━
                         </div>
                     );
                 } else if (nextGridColumn === gridColumn && nextRow > row) {
@@ -167,7 +190,6 @@ const Home = () => {
                             </div>
                             <div className="button-container">
                                 <button className="play-button" type='button' onClick={handlePlay}>Joacă</button>
-                                <Link to={'/addQuestions'} className="add-button">ADAUGA</Link>
                             </div>
                         </div>
                     </div>
@@ -182,3 +204,4 @@ const Home = () => {
 };
 
 export default Home;
+

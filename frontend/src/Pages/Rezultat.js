@@ -9,6 +9,7 @@ const Rezultat = () => {
     const userAnswers = location.state.answers || [];
     const nivel = location.state.nivel;
     const materie = location.state.materie;
+    const [questions, setQuestions] = useState([]);
     const [correctAnswers, setCorrectAnswers] = useState([]);
     const [result, setResult] = useState(0);
     const [scoreImage, setScoreImage] = useState('');
@@ -27,6 +28,19 @@ const Rezultat = () => {
             return count;
         }, 0);
     };
+
+    useEffect(() => {
+        const fetchQuestions = async () => {
+            try {
+                const response = await axios.get(`http://localhost:5269/getQuestions?level=${nivel}&course=${materie}`);
+                setQuestions(response.data);
+            } catch (error) {
+                console.error('Error fetching questions:', error);
+            }
+        }
+
+        fetchQuestions();
+    }, [nivel, materie]);
 
     useEffect(() => {
         const fetchAnswers = async () => {
@@ -54,8 +68,7 @@ const Rezultat = () => {
         if (result > 0) {
           addScore();
         }
-      }, [result]);
-
+    }, [result]);
 
     const addScore = async () => {
         const userId = localStorage.getItem('userId');
@@ -71,12 +84,12 @@ const Rezultat = () => {
                 headers: { 'Content-Type': 'application/json' },
                 params: { level: nivel, course: materie },
                 data: result,
-                });
+            });
 
             if (response.status === 200) {
-            console.log('Scor adaugat cu succes');
+                console.log('Scor adaugat cu succes');
             } else {
-            console.error('Failed to add score, status code:', response.status);
+                console.error('Failed to add score, status code:', response.status);
             }
         } catch (error) {
             console.error('Eroare la adaugarea scorului:', error);
@@ -103,34 +116,49 @@ const Rezultat = () => {
     }
 
     const navigateHome = () => {
-        navigate('/homeMaterie');
+        navigate('/materie', { state: { selectedMaterie: materie } });
     }
+
+    const getQuestionStatus = (questionIndex) => {
+        const userAnswer = userAnswers.find(answer => answer.qnIndex === questions[questionIndex].qnId);
+        const correctAnswer = correctAnswers.find(answer => answer.qnId === questions[questionIndex].qnId);
+        if (userAnswer && correctAnswer) {
+            if (userAnswer.selectedOption === correctAnswer.answer) {
+                return 'correct';
+            } else {
+                return 'incorrect';
+            }
+        }
+        return '';
+    };
 
     return (
         <div className='container_rez'>
-            <h2 className='h2_rez'>Rezultate user</h2>
-            <ul className='ul_rez'>
-                {userAnswers.map((answer, index) => (
-                    <li className='li_rez' key={index}>{`Intrebarea ${index + 1}: Raspunsul cu id ${answer.qnIndex} este ${answer.selectedOption}`}</li>
-                ))}
-            </ul>
-
-            <h2>Rezultate corecte</h2>
-            <ul>
-                {correctAnswers.map((answer, index) => (
-                    <li className='li_rez' key={index}>{`Intrebarea ${index + 1}: Raspunsul cu id ${answer.qnId} este ${answer.answer}`}</li>
-                ))}
-            </ul>
-
-            <div>Raspunsuri corecte: {result}</div>
             {scoreImage && <img src={scoreImage} alt="Score based result" className='score_image' />}
             <div className='result_rez'>Scorul tău este: {result}/{correctAnswers.length}</div>
-
-            {imagePath && <div>Path of selected image: {imagePath}</div>}
-            <br></br>
-            {result === correctAnswers.length && ( // Afisează butonul Next doar dacă mai există întrebări
+            <br />
+            {result === correctAnswers.length && (
                 <div>Ai raspuns corect la toate intrebarile. Ai trecut la nivelul urmator!</div>
             )}
+            <h2 className='h2_rez'>Rezultatele tale</h2>
+            {questions.map((question, index) => (
+                <div key={index} className={`question ${getQuestionStatus(index)}`}>
+                    <p className='p_rez'>{question.questionAsked}</p>
+                    <ul className='answer-options'>
+                        {question.options.map((option, optionIndex) => {
+                            const userAnswer = userAnswers.find(answer => answer.qnIndex === question.qnId);
+                            const correctAnswer = correctAnswers.find(answer => answer.qnId === question.qnId);
+                            const isSelected = userAnswer && userAnswer.selectedOption === (optionIndex + 1);
+                            const isCorrect = correctAnswer && correctAnswer.answer === (optionIndex + 1);
+                            return (
+                                <li key={optionIndex} className={`answer-option ${isCorrect ? 'correct-option' : ''} ${isSelected && !isCorrect ? 'incorrect-option' : ''}`}>
+                                    {option}
+                                </li>
+                            );
+                        })}
+                    </ul>
+                </div>
+            ))}
             <button className='button_rez' onClick={navigateHome}>Pagina Home</button>
         </div>
     );

@@ -49,7 +49,7 @@ const CommentsPage = () => {
                 {menuOpen && (
                     <div className="dropdown-menuH_com">
                         <button className="buttonH" type='button' onClick={() => navigate('/profile')}>Profil</button>
-                        <button className="buttonH" type='button' onClick={() => navigate('/homeMaterie')}>Link spre Materii</button>
+                        <button className="buttonH" type='button' onClick={() => navigate('/homeMaterie')}>Materii</button>
                         <button className="buttonH" type='button' onClick={handleLogout}>Deconectare</button>
                     </div>
                 )}

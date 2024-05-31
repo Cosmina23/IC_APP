@@ -17,6 +17,7 @@ import HomeMaterie from './Pages/HomeMaterie';
 import AddQuestions from './Pages/AddQuestions';
 import Challenge from './Pages/Challenge';
 import CommentsPage from './Pages/CommentsPage';
+import AdminPage from './Pages/AdminPage';
 import AddChallenge from './Pages/AddChallenge';
 
   
@@ -73,6 +74,10 @@ import AddChallenge from './Pages/AddChallenge';
       path: '/addChallenge',
       element: <AddChallenge/>
     },
+    {  
+    path: '/adminPage',
+    element: <AdminPage/>
+    }
   ]);
  
 export default function App(){

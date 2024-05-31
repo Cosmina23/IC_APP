@@ -1,141 +1,132 @@
 body {
     background-color: rgb(180, 172, 188);
-    margin: 0; /* Resetare margini implicite */
-    padding: 0; /* Resetare padding implicit */
-    font-family: Arial, sans-serif; /* Stil de font implicit pentru întreaga pagină */
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
 }
 
-.container{
-    background-color: rgb(0, 0, 0);   
-}
-
-.header h1{
+.container-profil {
+    background-color: rgb(187, 172, 196);
     color: #ffffff;
+    padding: 20px;
+}
+
+.header-profil {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.header-profil h1 {
+    margin-left: 20px;
+    font-size: 2em;
+}
+
+.img-home {
+    width: 50px;
+    height: 50px;
 }
 
 .profil-container {
-    margin-top: 10px;
     display: flex;
-    align-items: flex-start;
-}
-
-.dateUser{
-    z-index: -1;
-    margin-bottom: 100px;
-    display: flex;
-    flex-direction: row;
-    position: absolute; 
-    top: 0;
-    right: 0; 
-    border-radius: 10px;
-    margin: 150px; 
-    padding: 10px; 
-    width: 640px;
-}
-
-.pozaUser{
-    margin-left: 30px;
-    margin-right: 200px;
-    margin-bottom: 700px;
-}
-
-.imgProfil{
-    margin-left: 40px;
-    border-radius: 5%; 
-}
-
-
-.column-right {
-    display: flex;
-    flex-direction: column; 
-}
-
-.pop {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 50%;
-    height: 50%;
-    background-color: rgba(0, 0, 0, 0.5); /* Fond semi-transparent */
-    display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
 }
 
-.pp{
-    z-index: 100;
+.left-section-profil {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
 }
 
-
-.but{
-    margin-left: 150px;
-    margin-top: 30px;
+.imgProfil {
+    max-width: 400px;
+    height: auto;
+    border-radius: 5%;
+    margin-bottom: 20px;
 }
 
-.left-section button{
+.left-section-profil button, .btn-profil {
     color: #ffffff;
     background-color: rgb(0, 0, 0);
     border-radius: 50px;
     width: 200px;
     height: 40px;
-    margin-left: 135px;
-    margin-top: 20px;
+    margin: 10px 0;
 }
 
-.btn{
-    color: #ffffff;
-    background-color: rgb(0, 0, 0);
-    border-radius: 50px;
-    width: 200px;
-    height: 50px;
+.dateUser-profil {
+    width: 100%;
+    max-width: 640px;
+    margin-bottom: 20px;
+}
+
+.dateUser-profil div {
     margin-bottom: 10px;
 }
 
-.img-home{
-    width: 50px;
-    height: 50px;
-    margin-left: 20px;
+.dateUser-profil label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.dateUser-profil input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.tabel {
+    width: 100%;
+    max-width: 640px;
     margin-top: 20px;
-}
-
-
-.left-section{
-    position: fixed;
-    left: 0;
-    top: 0;
-    width: 500px;
-    height: 300px; 
-    margin-top: 100px;
-}
-
-
-
-.tabel{
-    position: absolute; 
-    top: 0;
-    right: 0; 
     border-radius: 10px;
     border: 1px solid #ccc;
-    padding: 10px; 
-    width: 640px;
-    margin-top: 350px;
-    margin-right: 150px;
-    height: 50%;
-    z-index: -1;
 }
 
-.dateUser div{
-    padding: 5px;
+.pp {
+    z-index: 100;
 }
-
-.header {
-    position: relative;
+.main-container-admin {
     display: flex;
-    
+    justify-content: center;
+    align-items: center;
+    height: 100vh; 
 }
 
-.header h1{
-    margin-left: 600px;
-    align-items: center;
+.btn-profil-admin {
+    color: #ffffff;
+    background-color: rgb(0, 0, 0);
+    border-radius: 50px;
+    width: 400px;
+    height: 100px;
+    margin: 10px 0;
+    display: flex;
     justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.btn-profil-admin a {
+    color: #ffffff;
+    text-decoration: none; 
+}
+
+.btn-profil-admin a:hover {
+    color: #ffffff; 
+}
+
+.logout-button {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    color: #ffffff;
+    background-color: rgb(0, 0, 0);
+    border: none;
+    border-radius: 50px;
+    padding: 10px 20px;
+    cursor: pointer;
 }

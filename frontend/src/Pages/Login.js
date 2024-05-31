@@ -16,37 +16,40 @@ const Login = () => {
     const submit = async (e) => {
         e.preventDefault();
         
-            const response = await fetch(' http://localhost:5269/api/Login', {
-                method: 'POST',
-                headers: {'Content-Type': 'application/json'},
-                credentials: 'include',//for cookies
-                body: JSON.stringify({
-                    email,
-                    password
-                })
-            });
-            //if backend worked
+        const response = await fetch('http://localhost:5269/api/Login', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            credentials: 'include', // pentru cookie-uri
+            body: JSON.stringify({
+                email,
+                password
+            })
+        });
 
-            if (response.ok) {
-                const data = await response.json();
+        if (response.ok) {
+            const data = await response.json();
+            const jwt = response.headers.get('set-cookie'); // Obține tokenul JWT din cookie-uri
 
-                console.log(data);
-                const { userId } = data;
+            console.log(data);
+            const { userId } = data;
 
-                // Store user ID in local storage
-                localStorage.setItem('userId', userId);
-                localStorage.setItem('userEmail', email);
+            // Stochează JWT și userId în localStorage
+            localStorage.setItem('jwt', jwt);
+            localStorage.setItem('userId', userId);
+            localStorage.setItem('userEmail', email);
 
-                setRedirect(true);
-            } else {
-                // Dacă autentificarea a eșuat, afișează mesajul de eroare
-                setErrorMessage('Email sau parolă incorecte. Te rugăm să încerci din nou.');
-            }
-
-    }
+            setRedirect(true);
+        } else {
+            // Dacă autentificarea a eșuat, afișează mesajul de eroare
+            setErrorMessage('Email sau parolă incorecte. Te rugăm să încerci din nou.');
+        }
+    };
     
     if(redirect){
-      navigate('/homeMaterie');
+        if(email === 'admin@admin.com')
+            navigate('/adminPage');
+        else
+          navigate('/homeMaterie');
     }
 
     return(
@@ -63,7 +66,7 @@ const Login = () => {
                                 <input type='text' className='email_class' autoComplete="EMAIL" placeholder='Email' required
                                 onChange={e => setEmail(e.target.value)}
                                 />
-                                <input type='text' className='par_class' autoComplete="PAROLA" placeholder='Parola' required
+                                <input type='password' className='par_class' autoComplete="PAROLA" placeholder='Parola' required
                                 onChange={e => setPassword(e.target.value)}
                                 />
                                 {errorMessage && <p className="error-message">{errorMessage}</p>}

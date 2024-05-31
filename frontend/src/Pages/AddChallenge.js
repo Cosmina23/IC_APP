@@ -49,13 +49,13 @@ const AddChallenge = () => {
         <div>
             <h2 className='h2-adaugare'>Adaugă challenge zilnic</h2>
             <div className="form-container">
-                <form className='formular-adaugare' onSubmit={handleSubmit}>
+                <form className='formular-adaugare'  onSubmit={handleSubmit}>
                 <div className="form-group">
                     <label className='label-adaugare' htmlFor="course">Materie</label>
                     <select
                     className="form-control"
                     value={course}
-                    onChange={e => setCourse(e.target.value)}
+                    onChange={(e) => setCourse(e.target.value)}
                     required
                     >
                     <option value="">Selectează o materie</option>
@@ -80,7 +80,7 @@ const AddChallenge = () => {
                             type="number"
                             className="form-control"
                             value={valoare}
-                            onChange={(e) => setValoare(e.target.value)}
+                           onChange={(e) => setValoare(e.target.value)}
                             required
                         />
                     </div>
@@ -109,8 +109,8 @@ const AddChallenge = () => {
                         <input
                             type="text"
                             className="form-control"
-                            value={option3}
-                            onChange={(e) => setOption3(e.target.value)}
+                           value={option3}
+                           onChange={(e) => setOption3(e.target.value)}
                             required
                         />
                     </div>
@@ -120,7 +120,7 @@ const AddChallenge = () => {
                             type="number"
                             className="form-control"
                             value={answer}
-                            onChange={(e) => setAnswer(e.target.value)}
+                           onChange={(e) => setAnswer(e.target.value)}
                             required
                         />
                     </div>

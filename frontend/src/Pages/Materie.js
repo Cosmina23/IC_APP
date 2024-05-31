@@ -16,7 +16,6 @@ const Materie = () => {
     const [transitionClass, setTransitionClass] = useState('');
     const [loggedIn, setLoggedIn] = useState(false);
     const [menuOpen, setMenuOpen] = useState(false);
-    const [nivelCurent, setNivelCurent] = useState('');
     const userId = localStorage.getItem('userId');
     const [hasAttempted, setHasAttempted] = useState(true);
 
@@ -41,25 +40,9 @@ const Materie = () => {
         };
 
         fetchUserData();
-        getNivelCurent();
         getPermissionChallenge();
     }, []);
 
-    const getNivelCurent = async () => {
-
-        try {
-            const response = await axios.get(`http://localhost:5269/getNivelCurent/${userId}`, {
-                params: { course: selectedMaterie },
-                headers: { 'Content-Type': 'application/json' },
-                withCredentials: true // pentru cookies
-            });
-            if (response.status === 200) {
-                setNivelCurent(response.data.currentLevel);
-            }
-        } catch (error) {
-            console.log('Eroare preluare nivel curent');
-        }
-    };
 
     const handleSwitch = (page) => {
         if (page !== activePage) {
@@ -148,7 +131,7 @@ const Materie = () => {
         <div className="materie-container">
             <div className="navbar_h">
                 <h1>{selectedMaterie}</h1>
-                <button className="glow-button" onClick={handleChallengeClick}>Challenge</button>
+                <button className="glow-button" onClick={handleChallengeClick}>Întrebarea zilei</button>
                 <div className="toggle-container">
                     <div className="custom-switch">
                         <div className={`switch-background`} style={{ left: activePage === 'Nivel' ? '0' : '100px' }}></div>
@@ -170,8 +153,8 @@ const Materie = () => {
                             {menuOpen && (
                                 <div className="dropdown-menuH">
                                     <button className="buttonH" type='button' onClick={handleProfile}>Profil({name})</button>
-                                    <button className='buttonH' type='button' onClick={handleComment}>Comentarii</button>
-                                    <button className="buttonH" type='button' onClick={() => navigate('/homeMaterie')}>Link spre Materii</button>
+                                    <button className='buttonH' type='button' onClick={handleComment}>Discutii</button>
+                                    <button className="buttonH" type='button' onClick={() => navigate('/homeMaterie')}>Materii</button>
                                     <button className="buttonH" type='button' onClick={handleLogout}>Deconectare</button>
                                 </div>
                             )}
@@ -183,7 +166,6 @@ const Materie = () => {
                     <p>Niciun buton nu a fost apăsat.</p>
                 )}
             </div>
-            <div>Nivel curent: {nivelCurent}</div>
             <ToastContainer />
         </div>
     );

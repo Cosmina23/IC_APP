@@ -6,18 +6,23 @@ const CommentForm = ({ onCommentAdded, replyTo, clearReply }) => {
     const [email, setEmail] = useState('');
     const [content, setContent] = useState('');
     const [parentCommentID, setParentCommentID] = useState(null);
+    const [replyToEmail, setReplyToEmail] = useState('');
+
 
     useEffect(() => {
         const userEmailFromLocalStorage = localStorage.getItem('userEmail');
         console.log("User Email from LocalStorage:", userEmailFromLocalStorage); // Debugging
         setEmail(userEmailFromLocalStorage || '');
-
+    
         if (replyTo) {
             setParentCommentID(replyTo.commentID);
+            setReplyToEmail(replyTo.userEmail); // Setează email-ul persoanei la care răspunzi
         } else {
             setParentCommentID(null);
+            setReplyToEmail(''); // Golește email-ul persoanei la care răspunzi
         }
     }, [replyTo]);
+    
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -40,7 +45,7 @@ const CommentForm = ({ onCommentAdded, replyTo, clearReply }) => {
         <div className="comment-form-container">
             <form onSubmit={handleSubmit} className="comment-form">
                 {replyTo && (
-                    <p className="p_raspuns">Răspuns pentru: {replyTo.commentID}</p>
+                    <p className="p_raspuns">Răspuns pentru:{replyToEmail}</p>
                 )}
                 <div className="form-row">
                     <textarea
@@ -49,7 +54,7 @@ const CommentForm = ({ onCommentAdded, replyTo, clearReply }) => {
                         onChange={(e) => setContent(e.target.value)}
                         required
                     ></textarea>
-                    <button type="submit">Add Comment</button>
+                    <button type="submit">Adauga</button>
                 </div>
             </form>
         </div>

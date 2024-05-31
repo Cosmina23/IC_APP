@@ -273,6 +273,24 @@ namespace backend.Controllers
             return Ok(new { currentLevel = romanaScore.NivelCurent });
         }
 
+        [HttpGet("getAllTotalScores/{userId}")]
+        public async Task<IActionResult> GetAllTotalScores(int userId)
+        {
+            var historyScore = await _context.HistoryScores.FirstOrDefaultAsync(hs => hs.UserId == userId);
+            var biologyScore = await _context.BiologyScores.FirstOrDefaultAsync(bs => bs.UserId == userId);
+            var romanaScore = await _context.RomanaScores.FirstOrDefaultAsync(rs => rs.UserId == userId);
+
+            var totalScores = new
+            {
+                Istorie = historyScore?.TotalScore ?? 0,
+                Biologie = biologyScore?.TotalScore ?? 0,
+                Romana = romanaScore?.TotalScore ?? 0
+            };
+
+            return Ok(totalScores);
+        }
+
+
 
     }
 }

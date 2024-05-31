@@ -31,7 +31,6 @@ const HomeMaterie = () => {
                 setLoggedIn(false);
             }
         };
-
         fetchUserData();
     }, []);
 
@@ -79,7 +78,7 @@ const HomeMaterie = () => {
                             {menuOpen && (
                                 <div className="dropdown-menuH">
                                     <button className="buttonH" type='button' onClick={handleProfile}>Profil({name})</button>
-                                    <button className='buttonH' type='button' onClick={handleComment}>Comentarii</button>
+                                    <button className='buttonH' type='button' onClick={handleComment}>Discutii</button>
                                     <button className="buttonH" type='button' onClick={handleLogout}>Deconectare</button>
                                 </div>
                             )}
